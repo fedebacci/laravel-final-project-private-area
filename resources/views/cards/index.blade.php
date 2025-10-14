@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
-@section('title', config('app.name', 'CardsMasters') . ' - Games List')
+@section('title', config('app.name', 'CardsMasters') . ' - Cards List')
 
 @section('content')
-    <section id="games-index-content">
+    <section id="cards-index-content">
         <div class="container">
             <h2 class="fs-4 text-secondary my-4">
-                {{ __('Games List') }}
+                {{ __('Cards List') }}
             </h2>
 
-            @if ($games->isEmpty())
+            @if ($cards->isEmpty())
                 <div class="alert alert-warning">
-                    No games found.
+                    No cards found.
                 </div>
             @else
                 <table class="table table-striped table-bordered">
@@ -21,7 +21,7 @@
                                 Id
                             </th>
                             <th scope="col">
-                                Logo
+                                Image
                             </th>
                             <th scope="col">
                                 Name
@@ -30,7 +30,13 @@
                                 Description
                             </th>
                             <th scope="col">
-                                Number of cards
+                                Game
+                            </th>
+                            <th scope="col">
+                                Price
+                            </th>
+                            <th scope="col">
+                                Edition
                             </th>
                             <th scope="col">
                                 Actions
@@ -39,45 +45,61 @@
                     </thead>
                     <tbody>
 
-                        @foreach ($games as $game)
+                        @foreach ($cards as $card)
                             <tr>
                                 <th scope="row">
-                                    {{ $game->id }}
+                                    {{ $card->id }}
                                 </th>
                                 <td>
-                                    @if ($game->logo)
-                                        {{-- <img src="{{ asset('storage/' . $game->logo) }}" alt="{{ $game->name }} Logo"> --}}
+                                    @if ($card->image)
+                                        {{-- <img src="{{ asset('storage/' . $card->image) }}" alt="{{ $card->name }} Image"> --}}
                                         {{-- - Temporary for testing without images management --}}
-                                        <img src="{{ $game->logo }}" alt="{{ $game->name }} Logo" class="game-logo">
+                                        <img src="{{ $card->image }}" alt="{{ $card->name }} Image" class="card-image">
                                     @else
-                                        No Logo
+                                        No image
                                     @endif
                                 </td>
                                 <td>
-                                    {{ $game->name }}
+                                    {{ $card->name }}
                                 </td>
                                 <td>
-                                    @if ($game->description)
-                                        {{ $game->description }}
-                                        {{-- {{ Str::limit($game->description, 50) }} --}}
+                                    @if ($card->description)
+                                        {{ $card->description }}
+                                        {{-- {{ Str::limit($card->description, 50) }} --}}
                                     @else
                                         No Description
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($game->cards) 
-                                        {{ count($game->cards) }}
+                                    @if ($card->game)
+                                        Game: {{ $card->game->name }}
+                                    @else
+                                        No game assigned (error)
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($card->price)
+                                        € {{ $card->price }}
+                                    @else
+                                        No price
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($card->edition)
+                                        {{ $card->edition }}
+                                    @else
+                                        No edition
                                     @endif
                                 </td>
                                 <td>
                                     {{-- Actions here --}}
-                                    <a href="{{ route('games.show', $game) }}" class="btn btn-primary btn-sm">
+                                    <a href="{{ route('cards.show', $card) }}" class="btn btn-primary btn-sm">
                                         View
                                     </a>
-                                    {{-- <a href="{{ route('games.edit', $game) }}" class="btn btn-warning btn-sm">
+                                    {{-- <a href="{{ route('cards.edit', $card) }}" class="btn btn-warning btn-sm">
                                         Edit
                                     </a> --}}
-                                    {{-- <form action="{{ route('games.destroy', $game) }}" method="POST" style="display: inline-block;">
+                                    {{-- <form action="{{ route('cards.destroy', $card) }}" method="POST" style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this game?')">Delete</button>

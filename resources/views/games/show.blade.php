@@ -28,6 +28,17 @@
                     <p>
                         {{ $game->description ?? 'No Description Available.' }}
                     </p>
+
+                    <p class="mb-0">
+                        Assigned cards: {{ count($game->cards) }}
+                    </p>
+                    @if (!$game->cards->isEmpty())
+                        <ul>
+                            @foreach ($game->cards as $card)
+                                <li>{{$card->name}}</li>
+                            @endforeach
+                        </ul>
+                    @endif
                 </div>
             </div>
 

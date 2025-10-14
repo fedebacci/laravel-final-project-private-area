@@ -54,7 +54,7 @@
                         <p>
                             Here you can manage your cards
                         </p>
-                        <a href="#" class="btn btn-primary">
+                        <a href="{{ route('cards.index') }}" class="btn btn-primary">
                             Manage Cards
                         </a>
                     </div>

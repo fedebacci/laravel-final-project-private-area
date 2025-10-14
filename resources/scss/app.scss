@@ -2,14 +2,17 @@
 
 
 
-img.game-logo {
+img.game-logo,
+img.card-image {
     display: block;
 }
-#games-index-content img.game-logo {
+#games-index-content img.game-logo,
+#cards-index-content img.card-image {
     max-width: 100px;
     max-height: 100px;
 }
-#games-show-content img.game-logo {
+#games-show-content img.game-logo,
+#cards-show-content img.card-image {
     max-width: 250px;
     max-height: 250px;
 }

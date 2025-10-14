@@ -38,10 +38,22 @@
                             </a>
     
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('dashboard') }}">{{__('Dashboard')}}</a>
-                                <a class="dropdown-item" href="{{ route('profile.edit') }}">{{__('Edit Profile')}}</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
+                                <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                    {{__('Dashboard')}}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('games.index') }}">
+                                    {{__('Manage games')}}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('cards.index') }}">
+                                    {{__('Manage cards')}}
+                                </a>
+                                {{-- <a class="dropdown-item" href="{{ route('decks.index') }}">
+                                    {{__('Manage decks')}}
+                                </a> --}}
+                                <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                    {{__('Edit Profile')}}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
     
