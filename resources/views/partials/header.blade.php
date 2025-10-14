@@ -47,9 +47,10 @@
                                 <a class="dropdown-item" href="{{ route('cards.index') }}">
                                     {{__('Manage cards')}}
                                 </a>
-                                {{-- <a class="dropdown-item" href="{{ route('decks.index') }}">
+                                <a class="dropdown-item" href="{{ route('decks.index') }}">
                                     {{__('Manage decks')}}
-                                </a> --}}
+                                </a>
+                                <hr class="dropdown-divider">
                                 <a class="dropdown-item" href="{{ route('profile.edit') }}">
                                     {{__('Edit Profile')}}
                                 </a>

@@ -30,6 +30,17 @@
                     </p>
 
                     <p class="mb-0">
+                        Available decks: {{ count($game->decks) }}
+                    </p>
+                    @if (!$game->decks->isEmpty())
+                        <ul>
+                            @foreach ($game->decks as $deck)
+                                <li>{{$deck->name}}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+
+                    <p class="mb-0">
                         Assigned cards: {{ count($game->cards) }}
                     </p>
                     @if (!$game->cards->isEmpty())

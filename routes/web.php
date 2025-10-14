@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CardsController;
+use App\Http\Controllers\DecksController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('games', GamesController::class)->middleware('auth');
 Route::resource('cards', CardsController::class)->middleware('auth');
+Route::resource('decks', DecksController::class)->middleware('auth');
 
 
 

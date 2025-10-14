@@ -69,7 +69,7 @@
                         <p>
                             Here you can manage your decks
                         </p>
-                        <a href="#" class="btn btn-primary">
+                        <a href="{{ route('decks.index') }}" class="btn btn-primary">
                             Manage Decks
                         </a>
                     </div>
