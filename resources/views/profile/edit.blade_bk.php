@@ -1,4 +1,7 @@
 @extends('layouts.app')
+
+@section('title', config('app.name', 'CardsMasters') . ' - Edit Profile')
+
 @section('content')
 <!-- Header -->
 <h2 class=" fw-semibold fs-2 text-secondary">
