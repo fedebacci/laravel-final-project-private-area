@@ -14,6 +14,7 @@
                     No games found.
                 </div>
             @else
+                {{ $games->links() }}
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>

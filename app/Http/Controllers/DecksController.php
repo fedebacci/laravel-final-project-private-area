@@ -13,7 +13,7 @@ class DecksController extends Controller
     public function index()
     {
         //
-        $decks = Deck::all();
+        $decks = Deck::paginate(10);
         return view('decks.index', compact('decks'));
     }
     

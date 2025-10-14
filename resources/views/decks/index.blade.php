@@ -14,6 +14,7 @@
                     No decks found.
                 </div>
             @else
+                {{ $decks->links() }}
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
