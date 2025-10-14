@@ -1,1 +1,15 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+
+
+img.game-logo {
+    display: block;
+}
+#games-index-content img.game-logo {
+    max-width: 100px;
+    max-height: 100px;
+}
+#games-show-content img.game-logo {
+    max-width: 250px;
+    max-height: 250px;
+}
