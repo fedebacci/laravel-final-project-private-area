@@ -5,9 +5,9 @@
 @section('content')
     <section id="games-index-content">
         <div class="container">
-            <h2 class="fs-4 text-secondary my-4">
+            {{-- <h2 class="fs-4 text-secondary my-4">
                 {{ __('Games List') }}
-            </h2>
+            </h2> --}}
 
             @if ($games->isEmpty())
                 <div class="alert alert-warning">

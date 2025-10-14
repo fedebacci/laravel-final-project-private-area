@@ -5,9 +5,9 @@
 @section('content')
 <section id="dashboard-content">
     <div class="container">
-        <h2 class="fs-4 text-secondary my-4">
+        {{-- <h2 class="fs-4 text-secondary my-4">
             {{ __('Dashboard') }}
-        </h2>
+        </h2> --}}
         <div class="row g-3">
             <div class="col-12">
                 <div class="card h-100">

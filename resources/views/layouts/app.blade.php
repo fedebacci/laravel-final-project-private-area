@@ -27,6 +27,15 @@
         @include('partials.header')
 
         <main class="">
+
+            <section id="view-title" class="py-3">
+                <div class="container">
+                    <h1 class="text-secondary text-center">
+                        @yield('title', config('app.name', 'CardsMasters'))
+                    </h1>
+                </div>
+            </section>
+
             @yield('content')
         </main>
     </div>

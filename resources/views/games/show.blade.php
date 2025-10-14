@@ -5,9 +5,9 @@
 @section('content')
     <section id="games-show-content">
         <div class="container">
-            <h2 class="fs-4 text-secondary my-4">
+            {{-- <h2 class="fs-4 text-secondary my-4">
                 {{ __('Game: ' . $game->name) }}
-            </h2>
+            </h2> --}}
 
             <div class="d-flex">
                 <a href="{{ route('games.index') }}" class="btn btn-secondary me-2 mb-3">
