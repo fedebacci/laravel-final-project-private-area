@@ -45,6 +45,26 @@
                             No game assigned (error)
                         </p>
                     @endif
+                    
+
+                    
+
+
+                    @if ($card->decks) 
+                        @php
+                            $card->decks = $card->decks->sortBy('id');
+                        @endphp
+                        <p class="mb-0">
+                            Assigned decks: {{ count($card->decks) }}
+                        </p>
+                        @if (!$card->decks->isEmpty())
+                            <ul>
+                                @foreach ($card->decks as $deck)
+                                    <li>{{$deck->name}} ({{$deck->game->name}})</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    @endif
 
 
                 </div>

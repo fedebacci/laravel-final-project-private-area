@@ -10,4 +10,8 @@ class Card extends Model
     public function game() {
         return $this->belongsTo(Game::class);
     }
+
+    public function decks() {
+        return $this->belongsToMany(Deck::class);
+    }
 }

@@ -11,7 +11,7 @@ class Deck extends Model
         return $this->belongsTo(Game::class);
     }
 
-    // public function cards() {
-    //     return $this->belongsToMany(Card::class);
-    // }
+    public function cards() {
+        return $this->belongsToMany(Card::class);
+    }
 }

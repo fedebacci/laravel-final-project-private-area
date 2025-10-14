@@ -30,7 +30,10 @@
                         Game: {{ $deck->game->name }}
                     </p>
 
-                    {{-- @if ($deck->cards) 
+                    @if ($deck->cards) 
+                        @php
+                            $deck->cards = $deck->cards->sortBy('id');
+                        @endphp
                         <p class="mb-0">
                             Assigned cards: {{ count($deck->cards) }}
                         </p>
@@ -41,7 +44,7 @@
                                 @endforeach
                             </ul>
                         @endif
-                    @endif --}}
+                    @endif
                 </div>
             </div>
 

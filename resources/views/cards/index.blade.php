@@ -33,6 +33,9 @@
                                 Game
                             </th>
                             <th scope="col">
+                                Associated decks
+                            </th>
+                            <th scope="col">
                                 Price
                             </th>
                             <th scope="col">
@@ -75,6 +78,13 @@
                                         Game: {{ $card->game->name }}
                                     @else
                                         No game assigned (error)
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($card->decks)
+                                        Decks: {{ count($card->decks) }}
+                                    @else
+                                        No decks assigned
                                     @endif
                                 </td>
                                 <td>
