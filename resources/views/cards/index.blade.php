@@ -9,6 +9,15 @@
                 {{ __('Cards List') }}
             </h2> --}}
 
+            <div class="d-flex gap-1 mb-3">
+                <a href="{{ route('dashboard') }}" class="btn btn-secondary">
+                    Back to the dashboard
+                </a>
+                <a href="#" class="btn btn-primary">
+                    Create new Card
+                </a>
+            </div>
+
             @if ($cards->isEmpty())
                 <div class="alert alert-warning">
                     No cards found.
