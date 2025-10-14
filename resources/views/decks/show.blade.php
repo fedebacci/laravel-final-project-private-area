@@ -24,7 +24,19 @@
                         {{ $deck->description ?? 'No Description Available.' }}
                     </p>
                     <p>
-                        € {{ $deck->price }}
+                        @if ($deck->price)
+                            € {{ $deck->price }}
+                        @else
+                            @php
+                                $total_price = 0;    
+                            @endphp
+                            @foreach ($deck->cards as $card)
+                                @php
+                                    $total_price = $total_price + $card->price;    
+                                @endphp
+                            @endforeach
+                            {{ $total_price != 0 ? 'Calc: € ' . $total_price : 'No price Available' }}
+                        @endif
                     </p>
                     <p>
                         Game: {{ $deck->game->name }}

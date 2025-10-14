@@ -78,162 +78,162 @@ class CardsTableSeeder extends Seeder
                 'name' => 'K♠',
                 'description' => 'King of Spades',
             ],
-            // [
-            //     'name' => 'A♥',
-            //     'description' => 'Ace of Hearts',
-            // ],
-            // [
-            //     'name' => '2♥',
-            //     'description' => 'Two of Hearts',
-            // ],
-            // [
-            //     'name' => '3♥',
-            //     'description' => 'Three of Hearts',
-            // ],
-            // [
-            //     'name' => '4♥',
-            //     'description' => 'Four of Hearts',
-            // ],
-            // [
-            //     'name' => '5♥',
-            //     'description' => 'Five of Hearts',
-            // ],
-            // [
-            //     'name' => '6♥',
-            //     'description' => 'Six of Hearts',
-            // ],
-            // [
-            //     'name' => '7♥',
-            //     'description' => 'Seven of Hearts',
-            // ],
-            // [
-            //     'name' => '8♥',
-            //     'description' => 'Eight of Hearts',
-            // ],
-            // [
-            //     'name' => '9♥',
-            //     'description' => 'Nine of Hearts',
-            // ],
-            // [
-            //     'name' => '10♥',
-            //     'description' => 'Ten of Hearts',
-            // ],
-            // [
-            //     'name' => 'J♥',
-            //     'description' => 'Jack of Hearts',
-            // ],
-            // [
-            //     'name' => 'Q♥',
-            //     'description' => 'Queen of Hearts',
-            // ],
-            // [
-            //     'name' => 'K♥',
-            //     'description' => 'King of Hearts',
-            // ],
-            // [
-            //     'name' => 'A♦',
-            //     'description' => 'Ace of Diamonds',
-            // ],
-            // [
-            //     'name' => '2♦',
-            //     'description' => 'Two of Diamonds',
-            // ],
-            // [
-            //     'name' => '3♦',
-            //     'description' => 'Three of Diamonds',
-            // ],
-            // [
-            //     'name' => '4♦',
-            //     'description' => 'Four of Diamonds',
-            // ],
-            // [
-            //     'name' => '5♦',
-            //     'description' => 'Five of Diamonds',
-            // ],
-            // [
-            //     'name' => '6♦',
-            //     'description' => 'Six of Diamonds',
-            // ],
-            // [
-            //     'name' => '7♦',
-            //     'description' => 'Seven of Diamonds',
-            // ],
-            // [
-            //     'name' => '8♦',
-            //     'description' => 'Eight of Diamonds',
-            // ],
-            // [
-            //     'name' => '9♦',
-            //     'description' => 'Nine of Diamonds',
-            // ],
-            // [
-            //     'name' => '10♦',
-            //     'description' => 'Ten of Diamonds',
-            // ],
-            // [
-            //     'name' => 'J♦',
-            //     'description' => 'Jack of Diamonds',
-            // ],
-            // [
-            //     'name' => 'Q♦',
-            //     'description' => 'Queen of Diamonds',
-            // ],
-            // [
-            //     'name' => 'K♦',
-            //     'description' => 'King of Diamonds',
-            // ],
-            // [
-            //     'name' => 	'A♣',
-            //     'description' => 	'Ace of Clubs',
-            // ],
-            // [
-            //     'name' => 	'2♣',
-            //     'description' => 	'Two of Clubs',
-            // ],
-            // [
-            //     'name' => 	'3♣',
-            //     'description' => 	'Three of Clubs',
-            // ],
-            // [
-            //     'name' => 	'4♣',
-            //     'description' => 	'Four of Clubs',
-            // ],
-            // [
-            //     'name' => 	'5♣',
-            //     'description' => 	'Five of Clubs',
-            // ],
-            // [
-            //     'name' => 	'6♣',
-            //     'description' => 	'Six of Clubs',
-            // ],
-            // [
-            //     'name' => 	'7♣',
-            //     'description' => 	'Seven of Clubs',
-            // ],
-            // [
-            //     'name' => 	'8♣',
-            //     'description' => 	'Eight of Clubs',
-            // ],
-            // [
-            //     'name' => 	'9♣',
-            //     'description' => 	'Nine of Clubs',
-            // ],
-            // [
-            //     'name' => 	'10♣',
-            //     'description' => 	'Ten of Clubs',
-            // ],
-            // [
-            //     'name' => 	'J♣',
-            //     'description' => 	'Jack of Clubs',
-            // ],
-            // [
-            //     'name' => 	'Q♣',
-            //     'description' => 	'Queen of Clubs',
-            // ],
-            // [
-            //     'name' => 	'K♣',
-            //     'description' => 	'King of Clubs',
-            // ],
+            [
+                'name' => 'A♥',
+                'description' => 'Ace of Hearts',
+            ],
+            [
+                'name' => '2♥',
+                'description' => 'Two of Hearts',
+            ],
+            [
+                'name' => '3♥',
+                'description' => 'Three of Hearts',
+            ],
+            [
+                'name' => '4♥',
+                'description' => 'Four of Hearts',
+            ],
+            [
+                'name' => '5♥',
+                'description' => 'Five of Hearts',
+            ],
+            [
+                'name' => '6♥',
+                'description' => 'Six of Hearts',
+            ],
+            [
+                'name' => '7♥',
+                'description' => 'Seven of Hearts',
+            ],
+            [
+                'name' => '8♥',
+                'description' => 'Eight of Hearts',
+            ],
+            [
+                'name' => '9♥',
+                'description' => 'Nine of Hearts',
+            ],
+            [
+                'name' => '10♥',
+                'description' => 'Ten of Hearts',
+            ],
+            [
+                'name' => 'J♥',
+                'description' => 'Jack of Hearts',
+            ],
+            [
+                'name' => 'Q♥',
+                'description' => 'Queen of Hearts',
+            ],
+            [
+                'name' => 'K♥',
+                'description' => 'King of Hearts',
+            ],
+            [
+                'name' => 'A♦',
+                'description' => 'Ace of Diamonds',
+            ],
+            [
+                'name' => '2♦',
+                'description' => 'Two of Diamonds',
+            ],
+            [
+                'name' => '3♦',
+                'description' => 'Three of Diamonds',
+            ],
+            [
+                'name' => '4♦',
+                'description' => 'Four of Diamonds',
+            ],
+            [
+                'name' => '5♦',
+                'description' => 'Five of Diamonds',
+            ],
+            [
+                'name' => '6♦',
+                'description' => 'Six of Diamonds',
+            ],
+            [
+                'name' => '7♦',
+                'description' => 'Seven of Diamonds',
+            ],
+            [
+                'name' => '8♦',
+                'description' => 'Eight of Diamonds',
+            ],
+            [
+                'name' => '9♦',
+                'description' => 'Nine of Diamonds',
+            ],
+            [
+                'name' => '10♦',
+                'description' => 'Ten of Diamonds',
+            ],
+            [
+                'name' => 'J♦',
+                'description' => 'Jack of Diamonds',
+            ],
+            [
+                'name' => 'Q♦',
+                'description' => 'Queen of Diamonds',
+            ],
+            [
+                'name' => 'K♦',
+                'description' => 'King of Diamonds',
+            ],
+            [
+                'name' => 	'A♣',
+                'description' => 	'Ace of Clubs',
+            ],
+            [
+                'name' => 	'2♣',
+                'description' => 	'Two of Clubs',
+            ],
+            [
+                'name' => 	'3♣',
+                'description' => 	'Three of Clubs',
+            ],
+            [
+                'name' => 	'4♣',
+                'description' => 	'Four of Clubs',
+            ],
+            [
+                'name' => 	'5♣',
+                'description' => 	'Five of Clubs',
+            ],
+            [
+                'name' => 	'6♣',
+                'description' => 	'Six of Clubs',
+            ],
+            [
+                'name' => 	'7♣',
+                'description' => 	'Seven of Clubs',
+            ],
+            [
+                'name' => 	'8♣',
+                'description' => 	'Eight of Clubs',
+            ],
+            [
+                'name' => 	'9♣',
+                'description' => 	'Nine of Clubs',
+            ],
+            [
+                'name' => 	'10♣',
+                'description' => 	'Ten of Clubs',
+            ],
+            [
+                'name' => 	'J♣',
+                'description' => 	'Jack of Clubs',
+            ],
+            [
+                'name' => 	'Q♣',
+                'description' => 	'Queen of Clubs',
+            ],
+            [
+                'name' => 	'K♣',
+                'description' => 	'King of Clubs',
+            ],
             [
                 'name' => 'Red Joker',
                 'description' => 'Red Joker Card',
@@ -248,22 +248,59 @@ class CardsTableSeeder extends Seeder
         $pokemonCards = [
             [
                 'name' => 'Pikachu',
-                'description' => 'Electric Mouse Pokemon',
+                'description' => 'Electric Mouse Pokemon (base)',
                 'image' => 'https://pkmncards.com/wp-content/uploads/en_US-Promo_SWSH-SWSH153-pikachu.jpeg',
                 'price' => $faker->randomFloat(2, 0, 10),
             ],
             [
+                'name' => 'Raichu',
+                'description' => 'Electric Mouse Pokemon (phase 1)',
+                'price' => $faker->randomFloat(2, 0, 10),
+            ],
+            [
+                'name' => 'Charmander',
+                'description' => 'Flame Dragon Pokemon (base)',
+            ],
+            [
+                'name' => 'Charmeleon',
+                'description' => 'Flame Dragon Pokemon (phase 1)',
+            ],
+            [
                 'name' => 'Charizard',
-                'description' => 'Flame Dragon Pokemon',
+                'description' => 'Flame Dragon Pokemon (phase 2)',
+            ],
+            [
+                'name' => 'Squirtle',
+                'description' => 'Water Turtoise Pokemon (base)',
+            ],
+            [
+                'name' => 'Wartortle',
+                'description' => 'Water Turtoise Pokemon (phase 1)',
+            ],
+            [
+                'name' => 'Blastoise',
+                'description' => 'Water Turtoise Pokemon (phase 2)',
+            ],
+            [
+                'name' => 'Turtwig',
+                'description' => 'Leaf Turtle Pokemon (base)',
+            ],
+            [
+                'name' => 'Grotle',
+                'description' => 'Leaf Turtle Pokemon (phase 1)',
+            ],
+            [
+                'name' => 'Torterra',
+                'description' => 'Leaf Turtle Pokemon (phase 2)',
             ],
         ];
-        for ($i = 0; $i < 5; $i++) {
-            $pokemonCards[] = [
-                'name' => $faker->word(),
-                'description' => $faker->sentence(),
-                'price' => $faker->randomFloat(2, 1, 1000),
-            ];
-        }
+        // for ($i = 0; $i < 5; $i++) {
+        //     $pokemonCards[] = [
+        //         'name' => $faker->word(),
+        //         'description' => $faker->sentence(),
+        //         'price' => $faker->randomFloat(2, 1, 1000),
+        //     ];
+        // }
 
 
 

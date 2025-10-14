@@ -59,7 +59,7 @@
                                         {{-- - Temporary for testing without images management --}}
                                         <img src="{{ $card->image }}" alt="{{ $card->name }} Image" class="card-image">
                                     @else
-                                        No image
+                                        No image Available
                                     @endif
                                 </td>
                                 <td>
@@ -91,14 +91,14 @@
                                     @if ($card->price)
                                         € {{ $card->price }}
                                     @else
-                                        No price
+                                        No price Available
                                     @endif
                                 </td>
                                 <td>
                                     @if ($card->edition)
                                         {{ $card->edition }}
                                     @else
-                                        No edition
+                                        No edition Available
                                     @endif
                                 </td>
                                 <td>
