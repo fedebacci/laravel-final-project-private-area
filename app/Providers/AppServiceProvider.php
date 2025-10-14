@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+// # Code for sing Bootstrap 5 for the paginator instead of TailwindCSS
+use Illuminate\Pagination\Paginator;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -20,5 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        // # Code for sing Bootstrap 5 for the paginator instead of TailwindCSS
+        Paginator::useBootstrapFive();
     }
 }

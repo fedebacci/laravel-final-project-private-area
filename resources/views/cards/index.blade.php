@@ -14,6 +14,7 @@
                     No cards found.
                 </div>
             @else
+                {{ $cards->links() }}
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
