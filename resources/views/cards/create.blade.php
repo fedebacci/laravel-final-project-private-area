@@ -14,7 +14,7 @@
                     Back to the dashboard
                 </a>
                 <a href="{{ route('cards.index') }}" class="btn btn-secondary">
-                    Back to Games List
+                    Back to Cards List
                 </a>
             </div>
 
