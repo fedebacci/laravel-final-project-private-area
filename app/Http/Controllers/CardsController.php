@@ -85,7 +85,8 @@ class CardsController extends Controller
     public function edit(Card $card)
     {
         //
-        return view('cards.edit', compact('card'));
+        $games = Game::all();
+        return view('cards.edit', compact('card', 'games'));
     }
 
     /**
@@ -94,6 +95,44 @@ class CardsController extends Controller
     public function update(Request $request, Card $card)
     {
         //
+
+        $data = $request->all();
+        // dd($data);
+        if (!array_key_exists('name', $data)) {
+            return redirect()->back()->withInput()->withErrors(['name' => 'The name is required for saving a new card.']);
+        }
+        if (!$request->has('game_id')) {
+            return redirect()->back()->withInput()->withErrors(['game' => 'You have to specify the game for saving a new card.']);
+        }        
+    
+        $card->name = $data['name'];
+        $card->game_id = $data['game_id'];
+        $card->description = $data['description'];
+        $card->price = $data['price'];
+        $card->edition = $data['edition'];
+
+        // # Section for uploading file (not working)
+        // todo: uncomment when file upload is fixed (look in depth to https://laravel.com/docs/11.x/filesystem if help is not provided)
+        // if (array_key_exists('image', $data)) {
+        //     if ($card->getOriginal('image')) {
+        //         dump('LA CARTA AVEVA UN'IMMAGINE');
+        //         Storage::delete($card->image);
+        //     } else {
+        //         dump('LA CARTA ERA SENZA UN'IMMAGINE');
+        //     }
+        //     $image = Storage::putFile('cards', $data['image']);
+        //     $card->image = $image;
+        // } else {
+        //     dump('L'IMMAGINE NON È STATA SETTATA');
+        // }        
+
+        // dd($card);
+        $card->save();
+
+
+        return redirect()->route('cards.show', $card->id);
+    
+    
     }
 
     /**

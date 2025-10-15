@@ -66,6 +66,32 @@
                             <input type="file" name="image" id="image" class="form-control">
                         </div>
 
+
+
+                        <div class="col-12">
+                            <label class="form-label">
+                                Card game
+                            </label>
+                            <select name="game_id" id="game_id" class="form-select" required>
+                                @foreach ($games as $game)
+                                    <option value="{{ $game->id }}" {{ $card->game_id == $game->id ? 'selected' : '' }}>{{ $game->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="price" class="form-label">
+                                Card price
+                            </label>
+                            <input value="{{ $card->price }}" type="number" name="price" id="price" class="form-control" min="0" max="1000" step=".01">
+                        </div>
+                        <div class="col-12">
+                            <label for="edition" class="form-label">
+                                Card edition
+                            </label>
+                            <input value="{{ $card->edition }}" type="text" name="edition" id="edition" class="form-control" pattern="\S(.*\S)?">
+                        </div>
+
+
                         <div class="col-12">
                             <input type="submit" value="Edit card" class="btn btn-success">
                         </div>

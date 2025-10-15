@@ -56,7 +56,7 @@
                             <label class="form-label">
                                 Card game
                             </label>
-                            <select name="game_id" id="game_id" class="form-select">
+                            <select name="game_id" id="game_id" class="form-select" required>
                                 @foreach ($games as $game)
                                     <option value="{{ $game->id }}">{{ $game->name }}</option>
                                 @endforeach
@@ -67,7 +67,7 @@
                             <label for="price" class="form-label">
                                 Card price
                             </label>
-                            <input type="number" name="price" id="price" class="form-control" min="0" max="1000" step=".01" required>
+                            <input type="number" name="price" id="price" class="form-control" min="0" max="1000" step=".01">
                         </div>
                         <div class="col-12">
                             <label for="edition" class="form-label">

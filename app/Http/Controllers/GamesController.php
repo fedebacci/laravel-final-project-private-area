@@ -142,20 +142,6 @@ class GamesController extends Controller
     public function destroy(Game $game)
     {
         //
-        // // # Section for deleting file, IF NECESSARY (not working)
-        // // todo: uncomment when file upload is fixed (look in depth to https://laravel.com/docs/11.x/filesystem if help is not provided)
-        // // if (array_key_exists('logo', $data)) {
-        // //     if ($game->getOriginal('logo')) {
-        // //         dump('IL GIOCO AVEVA UN LOGO');
-        // //         Storage::delete($game->logo);
-        // //     } else {
-        // //         dump('IL GIOCO ERA SENZA UN LOGO');
-        // //     }
-        // //     $logo = Storage::putFile('games', $data['logo']);
-        // //     $game->logo = $logo;
-        // // } else {
-        // //     dump('IL LOGO NON È STATO SETTATO');
-        // // }
 
         // if ($game->logo) {
         //     Storage::delete($game->logo);
