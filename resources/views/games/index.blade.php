@@ -13,7 +13,7 @@
                 <a href="{{ route('dashboard') }}" class="btn btn-secondary">
                     Back to the dashboard
                 </a>
-                <a href="#" class="btn btn-primary">
+                <a href="{{ route('games.create') }}" class="btn btn-primary">
                     Create new Game
                 </a>
             </div>
