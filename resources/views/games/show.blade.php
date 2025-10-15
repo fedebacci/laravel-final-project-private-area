@@ -9,9 +9,12 @@
                 {{ __('Game: ' . $game->name) }}
             </h2> --}}
 
-            <div class="d-flex">
-                <a href="{{ route('games.index') }}" class="btn btn-secondary me-2 mb-3">
+            <div class="d-flex gap-1 mb-3">
+                <a href="{{ route('games.index') }}" class="btn btn-secondary">
                     Back to Games List
+                </a>
+                <a href="{{ route('games.edit', $game) }}" class="btn btn-warning">
+                    Edit Game
                 </a>
             </div>
 
@@ -21,9 +24,10 @@
                 </div>
                 <div class="card-body">
                     @if ($game->logo)
-                        <img src="{{ asset('storage/' . $game->logo) }}" alt="{{ $game->name }} Logo" class="game-logo mb-3">
+                        {{-- <img src="{{ asset('storage/' . $game->logo) }}" alt="{{ $game->name }} Logo" class="game-logo mb-3"> --}}
                         {{-- - Temporary for testing without images management --}}
-                        {{-- <img src="{{ $game->logo }}" alt="{{ $game->name }} Logo" class="game-logo mb-3"> --}}
+                        {{-- todo: delete and uncomment the one above when file upload is fixed (look in depth to https://laravel.com/docs/11.x/filesystem if help is not provided)  --}}
+                        <img src="{{ $game->logo }}" alt="{{ $game->name }} Logo" class="game-logo mb-3">
                     @endif
                     <p>
                         {{ $game->description ?? 'No Description Available.' }}
