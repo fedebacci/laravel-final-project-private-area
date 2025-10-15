@@ -9,10 +9,13 @@
                 {{ __('Deck: ' . $deck->name) }}
             </h2> --}}
 
-            <div class="d-flex">
-                <a href="{{ route('decks.index') }}" class="btn btn-secondary me-2 mb-3">
+            <div class="d-flex gap-1 mb-3">
+                <a href="{{ route('decks.index') }}" class="btn btn-secondary">
                     Back to Decks List
                 </a>
+                <a href="{{ route('decks.edit', $deck) }}" class="btn btn-warning">
+                    Edit Deck
+                </a>                
             </div>
 
             <div class="card">

@@ -32,6 +32,7 @@ class DecksController extends Controller
     public function create()
     {
         //
+        // return view('decks.create');
     }
 
     /**
@@ -48,6 +49,7 @@ class DecksController extends Controller
     public function edit(Deck $deck)
     {
         //
+        // return view('decks.edit', compact('deck'));
     }
 
     /**
