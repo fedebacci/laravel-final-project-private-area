@@ -9,9 +9,12 @@
                 {{ __('Card: ' . $card->name) }}
             </h2> --}}
 
-            <div class="d-flex">
-                <a href="{{ route('cards.index') }}" class="btn btn-secondary me-2 mb-3">
+            <div class="d-flex gap-1 mb-3">
+                <a href="{{ route('cards.index') }}" class="btn btn-secondary">
                     Back to Cards List
+                </a>
+                <a href="{{ route('cards.edit', $card) }}" class="btn btn-warning">
+                    Edit Card
                 </a>
             </div>
 

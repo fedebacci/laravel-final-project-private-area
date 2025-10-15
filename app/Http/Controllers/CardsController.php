@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
+use App\Models\Game;
 use Illuminate\Http\Request;
 
 class CardsController extends Controller
@@ -32,6 +33,8 @@ class CardsController extends Controller
     public function create()
     {
         //
+        $games = Game::all();
+        return view('cards.create', compact('games'));
     }
 
     /**
@@ -40,6 +43,40 @@ class CardsController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->all();
+        // dd($data);
+        if (!array_key_exists('name', $data)) {
+            return redirect()->back()->withInput()->withErrors(['name' => 'The name is required for saving a new card.']);
+        }
+        if (!$request->has('game_id')) {
+            return redirect()->back()->withInput()->withErrors(['game' => 'You have to specify the game for saving a new card.']);
+        }
+
+
+
+        $newCard = new Card();
+
+        $newCard->name = $data['name'];
+        $newCard->game_id = $data['game_id'];
+        $newCard->description = $data['description'];
+        $newCard->price = $data['price'];
+        $newCard->edition = $data['edition'];
+
+        // # Section for uploading file (not working)
+        // todo: uncomment when file upload is fixed (look in depth to https://laravel.com/docs/11.x/filesystem if help is not provided)
+        // // if (key_exists('image', $data)) {
+        // if (array_key_exists('image', $data)) {
+        //     // - Sets random unique string to avoid duplicates and renames the image
+        //     // - Could do it manually to mantain the name using user id and timestamps with ::put static method
+        //     $image = Storage::putFile('games', $data['image']);
+        //     $newCard->image = $image;
+        // }
+
+        // dd($newCard);
+        $newCard->save();
+
+
+        return redirect()->route('cards.show', $newCard->id);
     }
 
     /**
@@ -48,6 +85,7 @@ class CardsController extends Controller
     public function edit(Card $card)
     {
         //
+        return view('cards.edit', compact('card'));
     }
 
     /**

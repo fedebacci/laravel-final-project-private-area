@@ -13,7 +13,7 @@
                 <a href="{{ route('dashboard') }}" class="btn btn-secondary">
                     Back to the dashboard
                 </a>
-                <a href="#" class="btn btn-primary">
+                <a href="{{ route('cards.create') }}" class="btn btn-primary">
                     Create new Card
                 </a>
             </div>
@@ -116,9 +116,9 @@
                                     <a href="{{ route('cards.show', $card) }}" class="btn btn-primary btn-sm">
                                         View
                                     </a>
-                                    {{-- <a href="{{ route('cards.edit', $card) }}" class="btn btn-warning btn-sm">
+                                    <a href="{{ route('cards.edit', $card) }}" class="btn btn-warning btn-sm">
                                         Edit
-                                    </a> --}}
+                                    </a>
                                     {{-- <form action="{{ route('cards.destroy', $card) }}" method="POST" style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')
