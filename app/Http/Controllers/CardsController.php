@@ -99,10 +99,10 @@ class CardsController extends Controller
         $data = $request->all();
         // dd($data);
         if (!array_key_exists('name', $data)) {
-            return redirect()->back()->withInput()->withErrors(['name' => 'The name is required for saving a new card.']);
+            return redirect()->back()->withInput()->withErrors(['name' => 'The name is required for updating a card.']);
         }
         if (!$request->has('game_id')) {
-            return redirect()->back()->withInput()->withErrors(['game' => 'You have to specify the game for saving a new card.']);
+            return redirect()->back()->withInput()->withErrors(['game' => 'You have to specify the game for updating a card.']);
         }        
     
         $card->name = $data['name'];
