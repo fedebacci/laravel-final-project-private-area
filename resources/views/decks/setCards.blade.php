@@ -29,27 +29,47 @@
                     </h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('decks.updateDeckCards', $deck) }}" method="POST" class="row g-3">
-                        @csrf
-                        @method('PUT')
 
-                        <div class="col-12">
-                            <label class="d-block">
-                                Carte contenute
-                            </label>
-                            @foreach ($availableCards as $availableCard)
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="availableCard-{{ $availableCard->id }}" value="{{ $availableCard->id }}" name="cards[]" {{ $deck->cards->contains($availableCard->id) ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="availableCard-{{ $availableCard->id }}">{{ $availableCard->name }}</label>
-                                </div>
-                            @endforeach
-                        </div>
+                    {{-- @dump($availableCards) --}}
+                    @if (count($availableCards) > 0)
+                        <form action="{{ route('decks.updateDeckCards', $deck) }}" method="POST" class="row g-3">
+                            @csrf
+                            @method('PUT')
+
+                            <div class="col-12">
+                                <label class="d-block">
+                                    Contained cards
+                                </label>
+                                @foreach ($availableCards as $availableCard)
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="availableCard-{{ $availableCard->id }}" value="{{ $availableCard->id }}" name="cards[]" {{ $deck->cards->contains($availableCard->id) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="availableCard-{{ $availableCard->id }}">{{ $availableCard->name }}</label>
+                                    </div>
+                                @endforeach
+                            </div>
 
 
-                        <div class="col-12">
-                            <input type="submit" value="Set deck cards" class="btn btn-success">
-                        </div>
-                    </form>
+                            <div class="col-12">
+                                <input type="submit" value="Set deck cards" class="btn btn-success">
+                            </div>
+                        </form>
+                    @else
+                        <p class="alert alert-warning m-0">
+                            There are no cards available for this game
+                            <br />
+                            Please 
+                            <a href="{{ route('cards.create') }}">
+                                create some new cards
+                            </a>
+                            and assign them to the
+                            <a href="{{ route('games.show', $deck->game_id) }}">
+                                same game
+                            </a>
+                            assigned to this deck
+                        </p>
+                    @endif
+
+
                 </div>
             </div>
 
