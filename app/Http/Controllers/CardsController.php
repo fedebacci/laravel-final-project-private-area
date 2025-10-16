@@ -141,5 +141,17 @@ class CardsController extends Controller
     public function destroy(Card $card)
     {
         //
+        // # Section for deleting file when deleting card (not working)
+        // todo: uncomment when file upload is fixed (look in depth to https://laravel.com/docs/11.x/filesystem if help is not provided)
+        // if ($card->logo) {
+        //     Storage::delete($card->logo);
+        // }
+
+        // dd($card);
+        $card->decks()->detach();
+
+        $card->delete();
+
+        return redirect()->route('cards.index');        
     }
 }

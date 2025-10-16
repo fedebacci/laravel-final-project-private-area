@@ -142,16 +142,16 @@ class GamesController extends Controller
     public function destroy(Game $game)
     {
         //
-
+        // # Section for deleting file when deleting game (not working)
+        // todo: uncomment when file upload is fixed (look in depth to https://laravel.com/docs/11.x/filesystem if help is not provided)
         // if ($game->logo) {
         //     Storage::delete($game->logo);
         // }
 
-        // $game->cards()->detach();
-        // $game->decks()->detach();
+        // dd($game);
 
-        // $game->delete();
+        $game->delete();
 
-        // return redirect()->route('games.index');
+        return redirect()->route('games.index');
     }
 }

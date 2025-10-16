@@ -92,21 +92,24 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{-- Actions here --}}
-                                    <a href="{{ route('decks.show', $deck) }}" class="btn btn-primary btn-sm">
-                                        View
-                                    </a>
-                                    <a href="{{ route('decks.edit', $deck) }}" class="btn btn-warning btn-sm">
-                                        Edit
-                                    </a>
-                                    <a href="{{ route('decks.setCards', $deck) }}" class="btn btn-success btn-sm">
-                                        Set cards
-                                    </a>
-                                    {{-- <form action="{{ route('decks.destroy', $deck) }}" method="POST" style="display: inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this game?')">Delete</button>
-                                    </form> --}}
+                                    {{-- <div class="d-flex flex-nowrap gap-1"> --}}
+                                    <div class="d-flex gap-1">
+                                        <a href="{{ route('decks.show', $deck) }}" class="btn btn-primary btn-sm">
+                                            View
+                                        </a>
+                                        <a href="{{ route('decks.edit', $deck) }}" class="btn btn-warning btn-sm">
+                                            Edit
+                                        </a>
+                                        <a href="{{ route('decks.setCards', $deck) }}" class="btn btn-success btn-sm">
+                                            Set cards
+                                        </a>
+                                        <x-delete-resource-button-modal>
+                                            <x-slot:button_class>btn-sm</x-slot>
+                                            <x-slot:resource_id>{{ $deck->id }}</x-slot>
+                                            <x-slot:resource_name>{{ $deck->name }}</x-slot>
+                                            <x-slot:resource_type>deck</x-slot>
+                                        </x-delete-resource-button-modal>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

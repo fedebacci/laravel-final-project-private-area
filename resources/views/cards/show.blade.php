@@ -16,6 +16,12 @@
                 <a href="{{ route('cards.edit', $card) }}" class="btn btn-warning">
                     Edit Card
                 </a>
+                <x-delete-resource-button-modal>
+                    <x-slot:button_class></x-slot>
+                    <x-slot:resource_id>{{ $card->id }}</x-slot>
+                    <x-slot:resource_name>{{ $card->name }}</x-slot>
+                    <x-slot:resource_type>card</x-slot>
+                </x-delete-resource-button-modal>                 
             </div>
 
             <div class="card">

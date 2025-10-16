@@ -112,6 +112,13 @@ class DecksController extends Controller
     public function destroy(Deck $deck)
     {
         //
+        // dd($deck);
+        // dd($deck->cards);
+        $deck->cards()->detach();
+
+        $deck->delete();
+
+        return redirect()->route('decks.index');            
     }
 
 

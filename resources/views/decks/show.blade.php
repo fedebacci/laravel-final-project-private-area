@@ -18,7 +18,13 @@
                 </a>   
                 <a href="{{ route('decks.setCards', $deck) }}" class="btn btn-success">
                     Set cards
-                </a>                             
+                </a>
+                <x-delete-resource-button-modal>
+                    <x-slot:button_class></x-slot>
+                    <x-slot:resource_id>{{ $deck->id }}</x-slot>
+                    <x-slot:resource_name>{{ $deck->name }}</x-slot>
+                    <x-slot:resource_type>deck</x-slot>
+                </x-delete-resource-button-modal>                                        
             </div>
 
             <div class="card">
