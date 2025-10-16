@@ -130,7 +130,7 @@ class CardsController extends Controller
         $card->save();
 
 
-        return redirect()->route('cards.show', $card->id);
+        return redirect()->route('cards.show', $card);
     
     
     }

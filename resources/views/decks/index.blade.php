@@ -99,6 +99,9 @@
                                     <a href="{{ route('decks.edit', $deck) }}" class="btn btn-warning btn-sm">
                                         Edit
                                     </a>
+                                    <a href="{{ route('decks.setCards', $deck) }}" class="btn btn-success btn-sm">
+                                        Set cards
+                                    </a>
                                     {{-- <form action="{{ route('decks.destroy', $deck) }}" method="POST" style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')

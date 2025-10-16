@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Card;
 use App\Models\Deck;
 use App\Models\Game;
 use Illuminate\Http\Request;
@@ -102,7 +103,7 @@ class DecksController extends Controller
         $deck->save();
 
 
-        return redirect()->route('decks.show', $deck->id);
+        return redirect()->route('decks.show', $deck);
     }
 
     /**
@@ -111,5 +112,47 @@ class DecksController extends Controller
     public function destroy(Deck $deck)
     {
         //
+    }
+
+
+
+
+    // # TEST
+    // - Having its own button and route would be more intuive to use than setting cards inside decks.edit route
+    /**
+     * Set cards for a deck
+     */
+    public function setCards(Deck $deck)
+    {
+        //
+        // return 'Setting cards for the deck: ' . $deck->name . ' (' . $deck->id . ')';
+
+        $availableCards = Card::where('game_id', $deck->game_id)->get();
+        return view('decks.setCards', compact('deck', 'availableCards'));
+    }
+
+    public function updateDeckCards(Request $request, Deck $deck)
+    {
+        //
+
+        $data = request()->all();
+        // dd($data['cards']);
+        // dd($data);
+
+
+        // // # If there are cards, attach them to the deck
+        // // - Possible usage for setting multiple cards? Maybe better to use quantity input for being more intuitive
+        // if ($request->has('cards')) {
+        //     $deck->cards()->attach($data['cards']);
+        // }
+        // # If there are cards, sync them to the deck
+        if ($request->has('cards')) {
+            // dd($data['cards']);
+            $deck->cards()->sync($data['cards']);
+        } else {
+            $deck->cards()->detach();
+        }
+
+        return redirect()->route('decks.show', $deck);
     }
 }

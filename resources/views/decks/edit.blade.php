@@ -32,7 +32,7 @@
                     <p class="text-secondary">
                         Fields marked with * are required.
                     </p>
-                    <form action="{{ route('decks.update', $deck->id) }}" method="POST" class="row g-3" enctype="multipart/form-data">
+                    <form action="{{ route('decks.update', $deck->id) }}" method="POST" class="row g-3">
                         @csrf
                         @method('PUT')
 

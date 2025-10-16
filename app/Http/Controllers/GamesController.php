@@ -133,7 +133,7 @@ class GamesController extends Controller
         // dd($game);
         $game->update();
 
-        return redirect()->route('games.show', $game->id);
+        return redirect()->route('games.show', $game);
     }
 
     /**
