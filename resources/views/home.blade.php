@@ -11,7 +11,7 @@
                 Welcome to my final PHP specialization project!
             </h2>
     
-            <p class="col-md-8 fs-4">
+            <p class="fs-4">
                 Register as a new user, have fun with the resources that I have prepared for you, edit them and create new ones!
             </p>
         </div>

@@ -21,7 +21,7 @@
                         @endif
     
                         <p>
-                            {{ __('You are logged in as') }} {{ Auth::user()->name }}
+                            {{ __('You are logged in as') }} {{ Auth::user()->name }}.
                         </p>
     
                         <a href="{{ route('profile.edit') }}" class="btn btn-primary">
@@ -37,7 +37,7 @@
                     </div>
                     <div class="card-body d-flex flex-column justify-content-between">
                         <p>
-                            Here you can manage games (Poker, Pokèmon, Magic, Yu-Gi-Oh! ecc..)
+                            Here you can manage the games (Poker, Pokèmon, Magic, Yu-Gi-Oh! ecc..).
                         </p>
                         <a href="{{ route('games.index') }}" class="btn btn-primary">
                             Manage Games
@@ -52,7 +52,7 @@
                     </div>
                     <div class="card-body d-flex flex-column justify-content-between">
                         <p>
-                            Here you can manage your cards
+                            Here you can manage the cards.
                         </p>
                         <a href="{{ route('cards.index') }}" class="btn btn-primary">
                             Manage Cards
@@ -67,7 +67,7 @@
                     </div>
                     <div class="card-body d-flex flex-column justify-content-between">
                         <p>
-                            Here you can manage your decks
+                            Here you can manage the decks.
                         </p>
                         <a href="{{ route('decks.index') }}" class="btn btn-primary">
                             Manage Decks

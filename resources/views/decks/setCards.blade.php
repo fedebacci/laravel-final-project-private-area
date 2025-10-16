@@ -55,17 +55,16 @@
                         </form>
                     @else
                         <p class="alert alert-warning m-0">
-                            There are no cards available for this game
+                            There are no cards available for this game.
                             <br />
                             Please 
-                            <a href="{{ route('cards.create') }}">
+                            <a href="{{ route('cards.create') }}" class="text-decoration-none">
                                 create some new cards
                             </a>
-                            and assign them to the
-                            <a href="{{ route('games.show', $deck->game_id) }}">
-                                same game
+                            and assign them to the same game assigned to this deck: 
+                            <a href="{{ route('games.show', $deck->game_id) }}" class="text-decoration-none">
+                                {{ $deck->game->name }}
                             </a>
-                            assigned to this deck
                         </p>
                     @endif
 
