@@ -65,9 +65,7 @@
                                 </th>
                                 <td>
                                     @if ($card->image)
-                                        {{-- <img src="{{ asset('storage/' . $card->image) }}" alt="{{ $card->name }} Image"> --}}
-                                        {{-- - Temporary for testing without images management --}}
-                                        <img src="{{ $card->image }}" alt="{{ $card->name }} Image" class="card-image">
+                                        <img src="{{ asset('storage/' . $card->image) }}" alt="{{ $card->name }} Image" class="card-image">
                                     @else
                                         No image Available
                                     @endif

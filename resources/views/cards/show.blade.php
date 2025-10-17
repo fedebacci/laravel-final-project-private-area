@@ -30,9 +30,7 @@
                 </div>
                 <div class="card-body">
                     @if ($card->image)
-                        {{-- <img src="{{ asset('storage/' . $card->image) }}" alt="{{ $card->name }} Image" class="mb-3"> --}}
-                        {{-- - Temporary for testing without images management --}}
-                        <img src="{{ $card->image }}" alt="{{ $card->name }} Image" class="card-image mb-3">
+                        <img src="{{ asset('storage/' . $card->image) }}" alt="{{ $card->name }} Image" class="card-image mb-3">
                     @endif
                     <p>
                         {{ $card->description ?? 'No Description Available.' }}

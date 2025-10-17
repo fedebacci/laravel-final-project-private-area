@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Card;
 use App\Models\Game;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CardsController extends Controller
 {
@@ -62,15 +63,13 @@ class CardsController extends Controller
         $newCard->price = $data['price'];
         $newCard->edition = $data['edition'];
 
-        // # Section for uploading file (not working)
-        // todo: uncomment when file upload is fixed (look in depth to https://laravel.com/docs/11.x/filesystem if help is not provided)
-        // // if (key_exists('image', $data)) {
-        // if (array_key_exists('image', $data)) {
-        //     // - Sets random unique string to avoid duplicates and renames the image
-        //     // - Could do it manually to mantain the name using user id and timestamps with ::put static method
-        //     $image = Storage::putFile('games', $data['image']);
-        //     $newCard->image = $image;
-        // }
+        // if (key_exists('image', $data)) {
+        if (array_key_exists('image', $data)) {
+            // - Sets random unique string to avoid duplicates and renames the image
+            // - Could do it manually to mantain the name using user id and timestamps with ::put static method
+            $image = Storage::putFile('cards', $data['image']);
+            $newCard->image = $image;
+        }
 
         // dd($newCard);
         $newCard->save();
@@ -111,20 +110,18 @@ class CardsController extends Controller
         $card->price = $data['price'];
         $card->edition = $data['edition'];
 
-        // # Section for uploading file (not working)
-        // todo: uncomment when file upload is fixed (look in depth to https://laravel.com/docs/11.x/filesystem if help is not provided)
-        // if (array_key_exists('image', $data)) {
-        //     if ($card->getOriginal('image')) {
-        //         dump('LA CARTA AVEVA UN'IMMAGINE');
-        //         Storage::delete($card->image);
-        //     } else {
-        //         dump('LA CARTA ERA SENZA UN'IMMAGINE');
-        //     }
-        //     $image = Storage::putFile('cards', $data['image']);
-        //     $card->image = $image;
-        // } else {
-        //     dump('L'IMMAGINE NON È STATA SETTATA');
-        // }        
+        if (array_key_exists('image', $data)) {
+            if ($card->getOriginal('image')) {
+                // dump("LA CARTA AVEVA UN'IMMAGINE");
+                Storage::delete($card->image);
+            } else {
+                // dump("LA CARTA ERA SENZA UN'IMMAGINE");
+            }
+            $image = Storage::putFile('cards', $data['image']);
+            $card->image = $image;
+        } else {
+            // dump("L'IMMAGINE NON È STATA SETTATA");
+        }        
 
         // dd($card);
         $card->save();
@@ -141,11 +138,9 @@ class CardsController extends Controller
     public function destroy(Card $card)
     {
         //
-        // # Section for deleting file when deleting card (not working)
-        // todo: uncomment when file upload is fixed (look in depth to https://laravel.com/docs/11.x/filesystem if help is not provided)
-        // if ($card->logo) {
-        //     Storage::delete($card->logo);
-        // }
+        if ($card->image) {
+            Storage::delete($card->image);
+        }
 
         // dd($card);
         $card->decks()->detach();
