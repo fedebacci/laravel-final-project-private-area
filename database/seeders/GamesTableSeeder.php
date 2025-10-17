@@ -22,8 +22,6 @@ class GamesTableSeeder extends Seeder
             [
                 'name' => 'Pokèmon',
                 'description' => 'A card game based on collecting and battling creatures called Pokèmon.',
-                // - Temporary for testing without images management
-                // 'logo' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Pok%C3%A9mon_Trading_Card_Game_logo.svg/2560px-Pok%C3%A9mon_Trading_Card_Game_logo.svg.png',
                 'logo' => 'games/Pokémon-Trading-Card-Game-logo-2560x1309.png',
             ],
             [

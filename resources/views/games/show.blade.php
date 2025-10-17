@@ -31,9 +31,6 @@
                 <div class="card-body">
                     @if ($game->logo)
                         <img src="{{ asset('storage/' . $game->logo) }}" alt="{{ $game->name }} Logo" class="game-logo mb-3">
-                        {{-- - Temporary for testing without images management --}}
-                        {{-- todo: delete and uncomment the one above when file upload is fixed (look in depth to https://laravel.com/docs/11.x/filesystem if help is not provided)  --}}
-                        {{-- <img src="{{ $game->logo }}" alt="{{ $game->name }} Logo" class="game-logo mb-3"> --}}
                     @endif
                     <p>
                         {{ $game->description ?? 'No Description Available.' }}
