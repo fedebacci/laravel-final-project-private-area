@@ -37,12 +37,13 @@ class DatabaseSeeder extends Seeder
             } else if (count($availableCardsIds) != 0) {
                 // - If game_id != 1 it is NOT a Poker deck, so it can have random cards
                 for ($i = 0; $i < count($availableCardsIds); $i++) {
-                    // - Ensuring Decks have the first two cards (which have realistic names)
-                    if ($i <= 1) {
-                        $cardId = $availableCardsIds[$i];
-                    } else {
-                        $cardId = $availableCardsIds[array_rand($availableCardsIds)];
-                    }
+                    // // - Ensuring Decks have the first two cards (which have realistic names)
+                    // if ($i <= 1) {
+                    //     $cardId = $availableCardsIds[$i];
+                    // } else {
+                    //     $cardId = $availableCardsIds[array_rand($availableCardsIds)];
+                    // }
+                    $cardId = $availableCardsIds[array_rand($availableCardsIds)];
                     $cardDeckRelations[] = [
                         'card_id' => $cardId,
                         'deck_id' => $availableDeck->id,
