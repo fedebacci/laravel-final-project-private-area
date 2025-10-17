@@ -23,7 +23,7 @@ class DecksTableSeeder extends Seeder
 
             $newDeck->game_id = floor($i / 2) + 1;
             $newDeck->name = $faker->word();
-            $newDeck->description = $faker->sentence();
+            $newDeck->description = $faker->text();
             $newDeck->price = $i % 2 == 0 ? $faker->randomFloat(2, 1, 1000) : null;
 
             $newDeck->save();

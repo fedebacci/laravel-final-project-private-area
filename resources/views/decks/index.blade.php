@@ -62,8 +62,11 @@
                                 </td>
                                 <td>
                                     @if ($deck->description)
-                                        {{ $deck->description }}
-                                        {{-- {{ Str::limit($deck->description, 50) }} --}}
+                                        @if (strlen($deck->description) <= 100)                                            
+                                            {{ $deck->description }}
+                                        @else                                            
+                                            {{ substr($deck->description, 0, 100) . '...' }}
+                                        @endif
                                     @else
                                         No Description
                                     @endif

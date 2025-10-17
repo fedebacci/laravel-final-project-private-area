@@ -75,8 +75,11 @@
                                 </td>
                                 <td>
                                     @if ($card->description)
-                                        {{ $card->description }}
-                                        {{-- {{ Str::limit($card->description, 50) }} --}}
+                                        @if (strlen($card->description) <= 100)                                            
+                                            {{ $card->description }}
+                                        @else                                            
+                                            {{ substr($card->description, 0, 100) . '...' }}
+                                        @endif
                                     @else
                                         No Description
                                     @endif

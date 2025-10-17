@@ -69,8 +69,11 @@
                                 </td>
                                 <td>
                                     @if ($game->description)
-                                        {{ $game->description }}
-                                        {{-- {{ Str::limit($game->description, 50) }} --}}
+                                        @if (strlen($game->description) <= 100)                                            
+                                            {{ $game->description }}
+                                        @else                                            
+                                            {{ substr($game->description, 0, 100) . '...' }}
+                                        @endif
                                     @else
                                         No Description
                                     @endif
