@@ -58,15 +58,13 @@ class GamesController extends Controller
         $newGame->name = $data['name'];
         $newGame->description = $data['description'];
 
-        // # Section for uploading file (not working)
-        // todo: uncomment when file upload is fixed (look in depth to https://laravel.com/docs/11.x/filesystem if help is not provided)
-        // // if (key_exists('logo', $data)) {
-        // if (array_key_exists('logo', $data)) {
-        //     // - Sets random unique string to avoid duplicates and renames the image
-        //     // - Could do it manually to mantain the name using user id and timestamps with ::put static method
-        //     $logo = Storage::putFile('games', $data['logo']);
-        //     $newGame->logo = $logo;
-        // }
+        // if (key_exists('logo', $data)) {
+        if (array_key_exists('logo', $data)) {
+            // - Sets random unique string to avoid duplicates and renames the image
+            // - Could do it manually to mantain the name using user id and timestamps with ::put static method
+            $logo = Storage::putFile('games', $data['logo']);
+            $newGame->logo = $logo;
+        }
 
         // dd($newGame);
         $newGame->save();
@@ -114,20 +112,18 @@ class GamesController extends Controller
         $game->name = $data['name'];
         $game->description = $data['description'];
 
-        // # Section for deleting file and uploading new one, IF NECESSARY (not working)
-        // todo: uncomment when file upload is fixed (look in depth to https://laravel.com/docs/11.x/filesystem if help is not provided)
-        // if (array_key_exists('logo', $data)) {
-        //     if ($game->getOriginal('logo')) {
-        //         dump('IL GIOCO AVEVA UN LOGO');
-        //         Storage::delete($game->logo);
-        //     } else {
-        //         dump('IL GIOCO ERA SENZA UN LOGO');
-        //     }
-        //     $logo = Storage::putFile('games', $data['logo']);
-        //     $game->logo = $logo;
-        // } else {
-        //     dump('IL LOGO NON È STATO SETTATO');
-        // }
+        if (array_key_exists('logo', $data)) {
+            if ($game->getOriginal('logo')) {
+                // dump('IL GIOCO AVEVA UN LOGO');
+                Storage::delete($game->logo);
+            } else {
+                // dump('IL GIOCO ERA SENZA UN LOGO');
+            }
+            $logo = Storage::putFile('games', $data['logo']);
+            $game->logo = $logo;
+        } else {
+            // dump('IL LOGO NON È STATO SETTATO');
+        }
 
         
         // dd($game);
@@ -142,11 +138,9 @@ class GamesController extends Controller
     public function destroy(Game $game)
     {
         //
-        // # Section for deleting file when deleting game (not working)
-        // todo: uncomment when file upload is fixed (look in depth to https://laravel.com/docs/11.x/filesystem if help is not provided)
-        // if ($game->logo) {
-        //     Storage::delete($game->logo);
-        // }
+        if ($game->logo) {
+            Storage::delete($game->logo);
+        }
 
         // dd($game);
 
