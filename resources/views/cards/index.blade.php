@@ -86,7 +86,10 @@
                                 </td>
                                 <td>
                                     @if ($card->game)
-                                        Game: {{ $card->game->name }}
+                                        Game: 
+                                        <a href="{{ route('games.show', $card->game->id) }}" class="text-decoration-none">
+                                            {{ $card->game->name }}
+                                        </a>
                                     @else
                                         No game assigned (error)
                                     @endif

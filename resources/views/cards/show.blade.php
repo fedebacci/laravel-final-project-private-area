@@ -45,7 +45,10 @@
 
                     @if ($card->game)
                         <p>
-                            Game: {{ $card->game->name }}
+                            Game: 
+                            <a href="{{ route('games.show', $card->game->id) }}" class="text-decoration-none">
+                                {{ $card->game->name }}
+                            </a>
                         </p>
                     @else
                         <p class="m-0 alert alert-danger">
@@ -67,7 +70,11 @@
                         @if (!$card->decks->isEmpty())
                             <ul>
                                 @foreach ($card->decks as $deck)
-                                    <li>{{$deck->name}} ({{$deck->game->name}})</li>
+                                    <li>
+                                        <a href="{{ route('decks.show', $deck->id) }}" class="text-decoration-none">
+                                            {{$deck->name}} ({{$deck->game->name}})
+                                        </a>
+                                    </li>
                                 @endforeach
                             </ul>
                         @endif
