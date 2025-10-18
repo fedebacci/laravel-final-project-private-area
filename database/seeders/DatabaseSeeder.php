@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
         $cardDeckRelations = [];        
         foreach ($availableDecks as $availableDeck) {
             $availableCardsIds = Card::where('game_id', $availableDeck->game_id)->get()->pluck('id')->toArray();
-            if (count($availableCardsIds) != 0 && $availableDeck->game_id == 1) {
+            // if (count($availableCardsIds) != 0 && $availableDeck->game_id == 1) {
+            if ($availableCardsIds) {
                 // - If game_id == 1 it is a Poker deck, so it has all available cards
                 for ($i = 0; $i < count($availableCardsIds); $i++) {
                     $cardDeckRelations[] = [
@@ -34,22 +35,23 @@ class DatabaseSeeder extends Seeder
                         'deck_id' => $availableDeck->id,
                     ];
                 }
-            } else if (count($availableCardsIds) != 0) {
-                // - If game_id != 1 it is NOT a Poker deck, so it can have random cards
-                for ($i = 0; $i < count($availableCardsIds); $i++) {
-                    // // - Ensuring Decks have the first two cards (which have realistic names)
-                    // if ($i <= 1) {
-                    //     $cardId = $availableCardsIds[$i];
-                    // } else {
-                    //     $cardId = $availableCardsIds[array_rand($availableCardsIds)];
-                    // }
-                    $cardId = $availableCardsIds[array_rand($availableCardsIds)];
-                    $cardDeckRelations[] = [
-                        'card_id' => $cardId,
-                        'deck_id' => $availableDeck->id,
-                    ];
-                }
-            }
+            } 
+            // else if (count($availableCardsIds) != 0) {
+            //     // - If game_id != 1 it is NOT a Poker deck, so it can have random cards
+            //     for ($i = 0; $i < count($availableCardsIds); $i++) {
+            //         // // - Ensuring Decks have the first two cards (which have realistic names)
+            //         // if ($i <= 1) {
+            //         //     $cardId = $availableCardsIds[$i];
+            //         // } else {
+            //         //     $cardId = $availableCardsIds[array_rand($availableCardsIds)];
+            //         // }
+            //         $cardId = $availableCardsIds[array_rand($availableCardsIds)];
+            //         $cardDeckRelations[] = [
+            //             'card_id' => $cardId,
+            //             'deck_id' => $availableDeck->id,
+            //         ];
+            //     }
+            // }
         }
         // - Remove duplicates if necessary
         $cardDeckRelations = array_unique($cardDeckRelations, SORT_REGULAR);

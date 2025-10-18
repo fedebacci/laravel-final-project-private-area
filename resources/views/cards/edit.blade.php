@@ -79,14 +79,47 @@
                             </select>
                         </div>
                         <div class="col-12">
+                            @php
+                                dump($card->id);
+                                dump($card->name);
+                                dump($card->price);
+                                dump('___ Starting foreach ___');
+
+                                $minCardPrice = 0;
+                                foreach($card->decks as $deck) {
+                                    dump('_ new foreach for deck _ ' . $deck->name);
+                                    $otherCardsValue = 0;
+                                    foreach ($deck->cards as $currentCard) {
+                                        if ($currentCard->id != $card->id) {
+                                            $otherCardsValue += $currentCard->price;
+                                        }
+                                    }
+                                    // dump('otherCardsValue: ' . $otherCardsValue);
+                                    // dump('$deck->price: ' . $deck->price);
+                                    // $difference = $otherCardsValue - $deck->price;
+                                    dump('$deck->price: ' . $deck->price);
+                                    dump('otherCardsValue: ' . $otherCardsValue);
+                                    $difference = $deck->price - $otherCardsValue;
+                                    dump('difference: ' . $difference);
+                                    dump('minCardPrice before check: ' . $minCardPrice);
+                                    if ($deck->price && ($minCardPrice == 0 || $difference > $minCardPrice)) {
+                                        $minCardPrice = $difference;
+                                    }
+                                }
+
+                                dump('___ Ending foreach ___');
+                                dump('FINAL minCardPrice: ' . $minCardPrice);                              
+                                dump('FINAL minCardPrice: ' . number_format($minCardPrice, 2));                              
+                            @endphp
                             <label for="price" class="form-label">
-                                Card price
+                                Card price {{$card->name}} {{$card->price}} (min: {{$minCardPrice}})
                             </label>
-                            <input value="{{ $card->price }}" type="number" name="price" id="price" class="form-control" min="0" max="1000" step=".01">
+                            {{-- <input value="{{ $card->price }}" type="number" name="price" id="price" class="form-control" min="0" max="1000" step=".01"> --}}
+                            <input value="{{ $card->price }}" type="number" name="price" id="price" class="form-control" min="{{ number_format($minCardPrice, 2) }}" max="1000" step=".01">
                         </div>
                         <div class="col-12">
                             <label for="edition" class="form-label">
-                                Card edition
+                                Card edition {{$card->name}} {{$card->price}}
                             </label>
                             <input value="{{ $card->edition }}" type="text" name="edition" id="edition" class="form-control" pattern="\S(.*\S)?">
                         </div>

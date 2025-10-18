@@ -62,11 +62,17 @@
                             </select>
                         </div>
                         <div class="col-12">
+                            @php
+                                $maxDeckPrice = 0;
+                                foreach($deck->cards as $card) {
+                                    $maxDeckPrice += $card->price;
+                                }
+                            @endphp
                             <label for="price" class="form-label">
-                                Deck price
-                            </label>
-                            <input value="{{ $deck->price }}" type="number" name="price" id="price" class="form-control" min="0" max="1000" step=".01">
-                        </div>                        
+                                Deck price (max: {{ $maxDeckPrice != 0 ? $maxDeckPrice : 10000 }})
+                            </label>                            
+                            <input value="{{ $deck->price }}" type="number" name="price" id="price" class="form-control" min="0" max="{{ $maxDeckPrice != 0 ? $maxDeckPrice : 10000 }}" step=".01">
+                        </div>
 
 
                         <div class="col-12">

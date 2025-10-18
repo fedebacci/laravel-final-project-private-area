@@ -41,12 +41,10 @@
                         @else
                             @php
                                 $total_price = 0;    
-                            @endphp
-                            @foreach ($deck->cards as $card)
-                                @php
+                                foreach ($deck->cards as $card) {
                                     $total_price = $total_price + $card->price;    
-                                @endphp
-                            @endforeach
+                                }
+                            @endphp
                             {{ $total_price != 0 ? 'Calc: € ' . $total_price : 'No price Available' }}
                         @endif
                     </p>
@@ -63,6 +61,14 @@
                         @endphp
                         <p class="mb-0">
                             Assigned cards: {{ count($deck->cards) }}
+
+                            @php
+                                $cardsValue = 0;
+                                foreach ($deck->cards as $cardForPrice) {
+                                    $cardsValue += $cardForPrice->price;
+                                }
+                            @endphp
+                            (TMP: {{$cardsValue}})
                         </p>
                         @if (!$deck->cards->isEmpty())
                             <ul>
@@ -71,6 +77,7 @@
                                         <a href="{{ route('cards.show', $card->id) }}" class="text-decoration-none">
                                             {{$card->name}}
                                         </a>
+                                         (TMP: € {{$card->price}})
                                     </li>
                                 @endforeach
                             </ul>

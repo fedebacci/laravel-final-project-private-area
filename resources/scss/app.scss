@@ -2,6 +2,13 @@
 
 
 
+// # Custom z-index class (similar to bootstrap's) to ensure header does not go under dumps (only necessary for debug)
+.z-4 {
+    z-index: 999999;
+}
+
+
+
 img.game-logo,
 img.card-image {
     display: block;

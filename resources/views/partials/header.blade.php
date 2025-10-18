@@ -1,4 +1,4 @@
-<header id="main-header">
+<header id="main-header" class="sticky-top z-4">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
