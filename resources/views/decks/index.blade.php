@@ -103,9 +103,6 @@
                                         <a href="{{ route('decks.edit', $deck) }}" class="btn btn-warning btn-sm">
                                             Edit
                                         </a>
-                                        <a href="{{ route('decks.setCards', $deck) }}" class="btn btn-success text-nowrap btn-sm">
-                                            Set cards
-                                        </a>
                                         <x-delete-resource-button-modal>
                                             <x-slot:button_class>btn-sm</x-slot>
                                             <x-slot:resource_id>{{ $deck->id }}</x-slot>

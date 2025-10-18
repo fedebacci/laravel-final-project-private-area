@@ -86,11 +86,41 @@
                                 foreach($deck->cards as $card) {
                                     $maxDeckPrice += $card->price;
                                 }
+                                $maxDeckPrice = $maxDeckPrice <= 10000 ? $maxDeckPrice : 10000;
                             @endphp
                             <label for="price" class="form-label">
-                                Deck price (max: {{ $maxDeckPrice != 0 ? $maxDeckPrice : 10000 }})
+                                {{-- Deck price (max: {{ $maxDeckPrice != 0 ? $maxDeckPrice : 10000 }}) --}}
+                                Deck price (max: {{ $maxDeckPrice }})
                             </label>                            
-                            <input value="{{ old('price') != null ? old('price') : $deck->price }}" type="number" name="price" id="price" class="form-control" min="0" max="{{ $maxDeckPrice != 0 ? $maxDeckPrice : 10000 }}" step=".01">
+                            {{-- <input value="{{ old('price') != null ? old('price') : $deck->price }}" type="number" name="price" id="price" class="form-control" min="0" max="{{ $maxDeckPrice != 0 ? $maxDeckPrice : 10000 }}" step=".01"> --}}
+                            <input value="{{ old('price') != null ? old('price') : $deck->price }}" type="number" name="price" id="price" class="form-control" min="0" max="{{ $maxDeckPrice }}" step=".01">
+                        </div>
+
+
+                        <div class="col-12">
+                            <label class="d-block">
+                                Contained cards
+                            </label>
+                            @forelse ($availableCards as $availableCard)
+                                {{-- <div class="form-check form-check-inline"> --}}
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="availableCard-{{ $availableCard->id }}" value="{{ $availableCard->id }}" name="cards[]" {{ $deck->cards->contains($availableCard->id) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="availableCard-{{ $availableCard->id }}">{{ $availableCard->name }} (TMP: {{ $availableCard->price }})</label>
+                                </div>
+                            @empty
+                                <p class="alert alert-warning m-0">
+                                    There are no cards available for this game.
+                                    <br />
+                                    Please 
+                                    <a href="{{ route('cards.create') }}" class="text-decoration-none">
+                                        create some new cards
+                                    </a>
+                                    and assign them to the same game assigned to this deck: 
+                                    <a href="{{ route('games.show', $deck->game_id) }}" class="text-decoration-none">
+                                        {{ $deck->game->name }}
+                                    </a>
+                                </p>
+                            @endforelse
                         </div>
 
 

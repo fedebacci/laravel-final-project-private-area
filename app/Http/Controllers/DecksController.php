@@ -63,7 +63,8 @@ class DecksController extends Controller
         $newDeck->name = $data['name'];
         $newDeck->game_id = $data['game_id'];
         $newDeck->description = $data['description'];
-        $newDeck->price = $data['price'];
+        // - NB: Price should not exist here
+        $newDeck->price = $data['price'] ?? null;
 
         // dd($card);
         $newDeck->save();
@@ -78,8 +79,8 @@ class DecksController extends Controller
     {
         //
         $games = Game::all();
-
-        return view('decks.edit', compact('deck', 'games'));
+        $availableCards = Card::where('game_id', $deck->game_id)->get();
+        return view('decks.edit', compact('deck', 'games', 'availableCards'));
     }
 
     /**
@@ -91,6 +92,22 @@ class DecksController extends Controller
 
         $data = $request->all();
         // dd($data);
+
+        if (array_key_exists('cards', $data)) {
+            $selectedCards = Card::whereIn('id', $data['cards'])->get();
+            $selectedCardsValue = 0;
+            foreach ($selectedCards as $selectedCard) {
+                $selectedCardsValue += $selectedCard->price;
+            }
+            if ($selectedCardsValue < $data['price']) {
+                return redirect()->back()->withInput()->withErrors(['Pricing error' => "The price of the deck (" . $data['price'] . ") exceeds the value of the selected cards ($selectedCardsValue).\nLower the deck's price or choose different cards"]);
+            }
+        } else if (!array_key_exists('cards', $data) && $data['price'] != 0) {
+            return redirect()->back()->withInput()->withErrors(['Pricing error' => "The deck has a price set but has not any cards.\nPlease assign to the deck some cards that are worth at least the deck price or remove the deck price"]);
+        }
+
+
+
 
         // # TEST
         // return redirect()->back()->withInput()->withErrors(['TEST' => 'TESTING RETRIEVED INPUTS VALUE']);
@@ -111,6 +128,18 @@ class DecksController extends Controller
         $deck->save();
 
 
+
+        // # If there are cards, sync them to the deck
+        if ($request->has('cards')) {
+            // dd($data['cards']);
+            $deck->cards()->sync($data['cards']);
+        } else {
+            $deck->cards()->detach();
+        }
+
+
+        
+
         return redirect()->route('decks.show', $deck);
     }
 
@@ -127,56 +156,5 @@ class DecksController extends Controller
         $deck->delete();
 
         return redirect()->route('decks.index');            
-    }
-
-
-
-
-    // # TEST
-    // - Having its own button and route would be more intuive to use than setting cards inside decks.edit route
-    /**
-     * Set cards for a deck
-     */
-    public function setCards(Deck $deck)
-    {
-        //
-        // return 'Setting cards for the deck: ' . $deck->name . ' (' . $deck->id . ')';
-
-        $availableCards = Card::where('game_id', $deck->game_id)->get();
-        return view('decks.setCards', compact('deck', 'availableCards'));
-    }
-
-    public function updateDeckCards(Request $request, Deck $deck)
-    {
-        //
-
-        $data = request()->all();
-        // dd($data['cards']);
-        // dd($data);
-        
-        // dump($data['cards']);
-        $selectedCards = Card::whereIn('id', $data['cards'])->get();
-        // dd($selectedCards);
-        $selectedCardsValue = 0;
-        foreach ($selectedCards as $selectedCard) {
-            $selectedCardsValue += $selectedCard->price;
-        }
-        if ($selectedCardsValue < $deck->price) {
-            return redirect()->back()->withInput()->withErrors(['Pricing error' => "The price of the deck ($deck->price) exceeds the value of the selected cards ($selectedCardsValue).\nLower the deck's price and come back"]);
-        }
-
-        // # TEST
-        // return redirect()->back()->withInput()->withErrors(['TEST' => 'TESTING RETRIEVED INPUTS VALUE']);   
-
-
-        // # If there are cards, sync them to the deck
-        if ($request->has('cards')) {
-            // dd($data['cards']);
-            $deck->cards()->sync($data['cards']);
-        } else {
-            $deck->cards()->detach();
-        }
-
-        return redirect()->route('decks.show', $deck);
     }
 }

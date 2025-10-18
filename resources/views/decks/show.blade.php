@@ -15,9 +15,6 @@
                 </a>
                 <a href="{{ route('decks.edit', $deck) }}" class="btn btn-warning">
                     Edit Deck
-                </a>   
-                <a href="{{ route('decks.setCards', $deck) }}" class="btn btn-success">
-                    Set cards
                 </a>
                 <x-delete-resource-button-modal>
                     <x-slot:button_class></x-slot>

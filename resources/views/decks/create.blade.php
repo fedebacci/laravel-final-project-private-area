@@ -74,10 +74,16 @@
                         </div>
 
                         <div class="col-12">
-                            <label for="price" class="form-label">
+                            {{-- <label for="price" class="form-label">
+                                Deck price
+                            </label> --}}
+                            {{-- <input value="{{ old('price') }}" type="number" name="price" id="price" class="form-control" min="0" max="1000" step=".01"> --}}
+                            <label class="form-label">
                                 Deck price
                             </label>
-                            <input value="{{ old('price') }}" type="number" name="price" id="price" class="form-control" min="0" max="1000" step=".01">
+                            <p class="form-control">
+                                You will be able to set a price after assigning some cards
+                            </p>
                         </div>
 
 

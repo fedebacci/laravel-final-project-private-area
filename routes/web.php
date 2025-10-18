@@ -26,11 +26,6 @@ Route::resource('games', GamesController::class)->middleware(['auth', 'verified'
 Route::resource('cards', CardsController::class)->middleware(['auth', 'verified']);
 Route::resource('decks', DecksController::class)->middleware(['auth', 'verified']);
 
-// # TEST
-// - Having its own button and route would be more intuive to use than setting cards inside decks.edit route 
-Route::get('decks/{deck}/setCards', [DecksController::class, 'setCards'])->middleware(['auth', 'verified'])->name('decks.setCards');
-Route::put('decks/{deck}/updateDeckCards', [DecksController::class, 'updateDeckCards'])->middleware(['auth', 'verified'])->name('decks.updateDeckCards');
-
 
 
 require __DIR__.'/auth.php';
