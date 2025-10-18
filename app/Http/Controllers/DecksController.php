@@ -155,8 +155,15 @@ class DecksController extends Controller
         // dd($data);
         
         // dump($data['cards']);
-        // $testCards = Card::whereIn('id', $data['cards'])->get();
-        // dd($testCards);
+        $selectedCards = Card::whereIn('id', $data['cards'])->get();
+        // dd($selectedCards);
+        $selectedCardsValue = 0;
+        foreach ($selectedCards as $selectedCard) {
+            $selectedCardsValue += $selectedCard->price;
+        }
+        if ($selectedCardsValue < $deck->price) {
+            return redirect()->back()->withInput()->withErrors(['Pricing error' => "The price of the deck exceeds the value of the selected cards.\nLower the deck's price and come back"]);
+        }
 
         // # TEST
         // return redirect()->back()->withInput()->withErrors(['TEST' => 'TESTING RETRIEVED INPUTS VALUE']);   
