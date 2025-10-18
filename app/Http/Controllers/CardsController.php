@@ -46,6 +46,12 @@ class CardsController extends Controller
         //
         $data = $request->all();
         // dd($data);
+
+        // # TEST
+        // return redirect()->back()->withInput()->withErrors(['TEST' => 'TESTING RETRIEVED INPUTS VALUE']);
+        
+        
+
         if (!array_key_exists('name', $data)) {
             return redirect()->back()->withInput()->withErrors(['name' => 'The name is required for saving a new card.']);
         }
@@ -97,6 +103,14 @@ class CardsController extends Controller
 
         $data = $request->all();
         // dd($data);
+
+
+        // # TEST
+        // return redirect()->back()->withInput()->withErrors(['TEST' => 'TESTING RETRIEVED INPUTS VALUE']);
+        
+        
+
+
         if (!array_key_exists('name', $data)) {
             return redirect()->back()->withInput()->withErrors(['name' => 'The name is required for updating a card.']);
         }

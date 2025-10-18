@@ -22,6 +22,19 @@
             </div>
 
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>
+                                <pre class="error">{{ $error }}</pre>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+
             <div class="card">
                 <div class="card-header">
                     <h5 class="text-center">
@@ -40,13 +53,13 @@
                             <label for="name" class="form-label">
                                 * Deck name
                             </label>
-                            <input value="{{ $deck->name }}" type="text" name="name" id="name" class="form-control" required pattern="\S(.*\S)?">
+                            <input value="{{ old('name') != null ? old('name') : $deck->name }}" type="text" name="name" id="name" class="form-control" required pattern="\S(.*\S)?">
                         </div>
                         <div class="col-12">
                             <label for="description" class="form-label">
                                 Deck description
                             </label>
-                            <textarea name="description" id="description" class="form-control">{{ $deck->description }}</textarea>
+                            <textarea name="description" id="description" class="form-control">{{ old('description') != null ? old('description') : $deck->description }}</textarea>
                         </div>
 
 
@@ -57,7 +70,13 @@
                             </label>
                             <select name="game_id" id="game_id" class="form-select" required>
                                 @foreach ($games as $game)
-                                    <option value="{{ $game->id }}" {{ $deck->game_id == $game->id ? 'selected' : '' }}>{{ $game->name }}</option>
+                                    @php
+                                        $isSelected = false;
+                                        if ((old('game_id') != null && old('game_id') == $game->id) || $deck->game_id == $game->id) {
+                                            $isSelected = true;
+                                        }
+                                    @endphp
+                                    <option value="{{ $game->id }}" {{ $isSelected == true ? 'selected' : '' }}>{{ $game->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -71,7 +90,7 @@
                             <label for="price" class="form-label">
                                 Deck price (max: {{ $maxDeckPrice != 0 ? $maxDeckPrice : 10000 }})
                             </label>                            
-                            <input value="{{ $deck->price }}" type="number" name="price" id="price" class="form-control" min="0" max="{{ $maxDeckPrice != 0 ? $maxDeckPrice : 10000 }}" step=".01">
+                            <input value="{{ old('price') != null ? old('price') : $deck->price }}" type="number" name="price" id="price" class="form-control" min="0" max="{{ $maxDeckPrice != 0 ? $maxDeckPrice : 10000 }}" step=".01">
                         </div>
 
 

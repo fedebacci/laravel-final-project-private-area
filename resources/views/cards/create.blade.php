@@ -18,6 +18,18 @@
                 </a>
             </div>
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>
+                                <pre class="error">{{ $error }}</pre>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
 
             <div class="card">
                 <div class="card-header">
@@ -35,18 +47,20 @@
                             <label for="name" class="form-label">
                                 * Card name
                             </label>
-                            <input type="text" name="name" id="name" class="form-control" required pattern="\S(.*\S)?">
+                            <input value="{{ old('name') }}" type="text" name="name" id="name" class="form-control" required pattern="\S(.*\S)?">
                         </div>
                         <div class="col-12">
                             <label for="description" class="form-label">
                                 Card description
                             </label>
-                            <textarea name="description" id="description" class="form-control"></textarea>
+                            <textarea name="description" id="description" class="form-control">{{ old('description') }}</textarea>
                         </div>
                         <div class="col-12">
                             <label for="image" class="form-label">
                                 Card image
                             </label>
+                            {{-- # Not possible for security reasons --}}
+                            {{-- <input value="{{ old('image') }}" type="file" name="image" id="image" class="form-control"> --}}
                             <input type="file" name="image" id="image" class="form-control">
                         </div>
 
@@ -58,7 +72,13 @@
                             </label>
                             <select name="game_id" id="game_id" class="form-select" required>
                                 @foreach ($games as $game)
-                                    <option value="{{ $game->id }}">{{ $game->name }}</option>
+                                    @php
+                                        $isSelected = false;
+                                        if ((old('game_id') != null && old('game_id') == $game->id)) {
+                                            $isSelected = true;
+                                        }
+                                    @endphp                                  
+                                    <option value="{{ $game->id }}"{{ $isSelected == true ? 'selected' : '' }}>{{ $game->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -67,13 +87,13 @@
                             <label for="price" class="form-label">
                                 Card price
                             </label>
-                            <input type="number" name="price" id="price" class="form-control" min="0" max="1000" step=".01">
+                            <input value="{{ old('price') }}" type="number" name="price" id="price" class="form-control" min="0" max="1000" step=".01">
                         </div>
                         <div class="col-12">
                             <label for="edition" class="form-label">
                                 Card edition
                             </label>
-                            <input type="text" name="edition" id="edition" class="form-control" pattern="\S(.*\S)?">
+                            <input value="{{ old('edition') }}" type="text" name="edition" id="edition" class="form-control" pattern="\S(.*\S)?">
                         </div>
 
 

@@ -44,6 +44,10 @@ class GamesController extends Controller
         //
         $data = $request->all();
         // dd($data);
+
+        // # TEST
+        // return redirect()->back()->withInput()->withErrors(['TEST' => 'TESTING RETRIEVED INPUTS VALUE']);
+
         // if (key_exists('name', $data)) {
         if (!array_key_exists('name', $data)) {
             return redirect()->back()->withInput()->withErrors(['name' => 'The name is required for saving a new game.']);
@@ -94,6 +98,14 @@ class GamesController extends Controller
         //
         $data = $request->all();
         // dd($data);
+
+
+        // # TEST
+        // return redirect()->back()->withInput()->withErrors(['TEST' => 'TESTING RETRIEVED INPUTS VALUE']);
+        
+        
+
+
         // dump($game);
         // - getOriginal() found on: https://laravel.com/docs/11.x/eloquent#examining-attribute-changes
         // - see also isDirty() to see if model's attributes HAVE BEEN changed

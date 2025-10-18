@@ -19,6 +19,19 @@
             </div>
 
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>
+                                <pre class="error">{{ $error }}</pre>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif            
+
+
             <div class="card">
                 <div class="card-header">
                     <h5 class="text-center">
@@ -35,18 +48,20 @@
                             <label for="name" class="form-label">
                                 * Game name
                             </label>
-                            <input type="text" name="name" id="name" class="form-control" required pattern="\S(.*\S)?">
+                            <input value="{{ old('name') }}" type="text" name="name" id="name" class="form-control" required pattern="\S(.*\S)?">
                         </div>
                         <div class="col-12">
                             <label for="description" class="form-label">
                                 Game description
                             </label>
-                            <textarea name="description" id="description" class="form-control"></textarea>
+                            <textarea name="description" id="description" class="form-control">{{ old('description') }}</textarea>
                         </div>
                         <div class="col-12">
                             <label for="logo" class="form-label">
                                 Game logo
                             </label>
+                            {{-- # Not possible for security reasons --}}
+                            {{-- <input value="{{ old('logo') }}" type="file" name="logo" id="logo" class="form-control"> --}}
                             <input type="file" name="logo" id="logo" class="form-control">
                         </div>
                         <div class="col-12">

@@ -22,6 +22,18 @@
             </div>
 
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>
+                                <pre class="error">{{ $error }}</pre>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif         
+
             <div class="card">
                 <div class="card-header">
                     <h5 class="text-center">

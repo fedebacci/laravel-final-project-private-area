@@ -47,6 +47,10 @@ class DecksController extends Controller
         //
         $data = $request->all();
         // dd($data);
+
+        // # TEST
+        // return redirect()->back()->withInput()->withErrors(['TEST' => 'TESTING RETRIEVED INPUTS VALUE']);
+
         if (!array_key_exists('name', $data)) {
             return redirect()->back()->withInput()->withErrors(['name' => 'The name is required for creating a new deck.']);
         }
@@ -87,6 +91,10 @@ class DecksController extends Controller
 
         $data = $request->all();
         // dd($data);
+
+        // # TEST
+        // return redirect()->back()->withInput()->withErrors(['TEST' => 'TESTING RETRIEVED INPUTS VALUE']);
+
         if (!array_key_exists('name', $data)) {
             return redirect()->back()->withInput()->withErrors(['name' => 'The name is required for updating a deck.']);
         }
@@ -145,13 +153,15 @@ class DecksController extends Controller
         $data = request()->all();
         // dd($data['cards']);
         // dd($data);
+        
+        // dump($data['cards']);
+        // $testCards = Card::whereIn('id', $data['cards'])->get();
+        // dd($testCards);
+
+        // # TEST
+        // return redirect()->back()->withInput()->withErrors(['TEST' => 'TESTING RETRIEVED INPUTS VALUE']);   
 
 
-        // // # If there are cards, attach them to the deck
-        // // - Possible usage for setting multiple cards? Maybe better to use quantity input for being more intuitive
-        // if ($request->has('cards')) {
-        //     $deck->cards()->attach($data['cards']);
-        // }
         // # If there are cards, sync them to the deck
         if ($request->has('cards')) {
             // dd($data['cards']);

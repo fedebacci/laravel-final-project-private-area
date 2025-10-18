@@ -21,6 +21,17 @@
                 </a>
             </div>
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>
+                                <pre class="error">{{ $error }}</pre>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
             <div class="card">
                 <div class="card-header">
@@ -40,88 +51,65 @@
                             <label for="name" class="form-label">
                                 * Card name
                             </label>
-                            <input value="{{ $card->name }}" type="text" name="name" id="name" class="form-control" required pattern="\S(.*\S)?">
+                            <input value="{{ old('name') != null ? old('name') : $card->name }}" type="text" name="name" id="name" class="form-control" required pattern="\S(.*\S)?">
                         </div>
                         <div class="col-12">
                             <label for="description" class="form-label">
                                 Card description
                             </label>
-                            <textarea name="description" id="description" class="form-control">{{ $card->description }}</textarea>
+                            <textarea name="description" id="description" class="form-control">{{ old('description') != null ? old('description') : $card->description }}</textarea>
                         </div>
-
-                        {{-- - 2 possibilities: don't show the input if original card has no image or check presence in update route --}}
-                        {{-- - The first has the problem of not allowing to set an image if not set during creation, I'll try the second --}}
-                        {{-- @if ($card->image)
-                            <div class="col-12">
-                                <label for="image" class="form-label">
-                                    Card image
-                                </label>
-                                <input type="file" name="image" id="image" class="form-control">
-                            </div>
-                        @endif --}}
                         <div class="col-12">
                             <label for="image" class="form-label">
                                 Card image
                             </label>
+                            {{-- # Not possible for security reasons --}}
+                            {{-- <input value="{{ old('image') }}" type="file" name="image" id="image" class="form-control"> --}}
                             <input type="file" name="image" id="image" class="form-control">
                         </div>
-
-
-
                         <div class="col-12">
                             <label class="form-label">
                                 Card game
                             </label>
                             <select name="game_id" id="game_id" class="form-select" required>
                                 @foreach ($games as $game)
-                                    <option value="{{ $game->id }}" {{ $card->game_id == $game->id ? 'selected' : '' }}>{{ $game->name }}</option>
+                                    @php
+                                        $isSelected = false;
+                                        if ((old('game_id') != null && old('game_id') == $game->id) || $card->game_id == $game->id) {
+                                            $isSelected = true;
+                                        }
+                                    @endphp                                
+                                    <option value="{{ $game->id }}" {{ $isSelected == true ? 'selected' : '' }}>{{ $game->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-12">
                             @php
-                                dump($card->id);
-                                dump($card->name);
-                                dump($card->price);
-                                dump('___ Starting foreach ___');
-
                                 $minCardPrice = 0;
                                 foreach($card->decks as $deck) {
-                                    dump('_ new foreach for deck _ ' . $deck->name);
                                     $otherCardsValue = 0;
                                     foreach ($deck->cards as $currentCard) {
+                                        // - Could also add all cards and subtract $card->price in $difference to avoid this if statement
                                         if ($currentCard->id != $card->id) {
                                             $otherCardsValue += $currentCard->price;
                                         }
                                     }
-                                    // dump('otherCardsValue: ' . $otherCardsValue);
-                                    // dump('$deck->price: ' . $deck->price);
-                                    // $difference = $otherCardsValue - $deck->price;
-                                    dump('$deck->price: ' . $deck->price);
-                                    dump('otherCardsValue: ' . $otherCardsValue);
                                     $difference = $deck->price - $otherCardsValue;
-                                    dump('difference: ' . $difference);
-                                    dump('minCardPrice before check: ' . $minCardPrice);
                                     if ($deck->price && ($minCardPrice == 0 || $difference > $minCardPrice)) {
                                         $minCardPrice = $difference;
                                     }
-                                }
-
-                                dump('___ Ending foreach ___');
-                                dump('FINAL minCardPrice: ' . $minCardPrice);                              
-                                dump('FINAL minCardPrice: ' . number_format($minCardPrice, 2));                              
+                                }                          
                             @endphp
                             <label for="price" class="form-label">
                                 Card price {{$card->name}} {{$card->price}} (min: {{$minCardPrice}})
                             </label>
-                            {{-- <input value="{{ $card->price }}" type="number" name="price" id="price" class="form-control" min="0" max="1000" step=".01"> --}}
-                            <input value="{{ $card->price }}" type="number" name="price" id="price" class="form-control" min="{{ number_format($minCardPrice, 2) }}" max="1000" step=".01">
+                            <input value="{{ old('price') != null ? old('price') : $card->price }}" type="number" name="price" id="price" class="form-control" min="{{ number_format($minCardPrice, 2) }}" max="1000" step=".01">
                         </div>
                         <div class="col-12">
                             <label for="edition" class="form-label">
                                 Card edition {{$card->name}} {{$card->price}}
                             </label>
-                            <input value="{{ $card->edition }}" type="text" name="edition" id="edition" class="form-control" pattern="\S(.*\S)?">
+                            <input value="{{ old('edition') != null ? old('edition') : $card->edition }}" type="text" name="edition" id="edition" class="form-control" pattern="\S(.*\S)?">
                         </div>
 
 
