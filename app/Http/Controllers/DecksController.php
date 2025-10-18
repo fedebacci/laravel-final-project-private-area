@@ -162,7 +162,7 @@ class DecksController extends Controller
             $selectedCardsValue += $selectedCard->price;
         }
         if ($selectedCardsValue < $deck->price) {
-            return redirect()->back()->withInput()->withErrors(['Pricing error' => "The price of the deck exceeds the value of the selected cards.\nLower the deck's price and come back"]);
+            return redirect()->back()->withInput()->withErrors(['Pricing error' => "The price of the deck ($deck->price) exceeds the value of the selected cards ($selectedCardsValue).\nLower the deck's price and come back"]);
         }
 
         // # TEST
