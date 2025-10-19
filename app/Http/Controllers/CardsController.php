@@ -17,7 +17,6 @@ class CardsController extends Controller
         //
         $data = $request->all();
 
-
         if (!array_key_exists('search', $data)) {
             $cards = Card::paginate(10);
             $searchValue = null;

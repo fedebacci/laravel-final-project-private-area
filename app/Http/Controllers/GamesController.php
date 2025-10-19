@@ -15,8 +15,6 @@ class GamesController extends Controller
     {
         //
         $data = $request->all();
-        // dd($data);
-        // dump($data);
         
         if (!array_key_exists('search', $data)) {
             $games = Game::paginate(10);
@@ -27,9 +25,7 @@ class GamesController extends Controller
             $games = Game::where('name', 'like', '%' . $data['search'] . '%')->paginate(10);
             $searchValue = $data['search'];
         }
-        
-        // dump($searchValue);
-        // dd($games);
+
         return view('games.index', compact('games', 'searchValue'));
     }
     

@@ -20,12 +20,26 @@
 
 
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>
+                                <pre class="error">{{ $error }}</pre>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+
+
             <form action="{{ route('games.index') }}" method="GET" class="row g-3">
                 @csrf
                 <div class="col-12">
                     <div class="input-group mb-3">
                         <input type="submit" value="Search" class="btn btn-outline-success">
-                        <input value="{{ $searchValue }}" name="search" type="text" class="form-control" placeholder="Search">
+                        <input value="{{ $searchValue }}" name="search" type="text" class="form-control" placeholder="Search by name">
                     </div>
                 </div>
             </form>

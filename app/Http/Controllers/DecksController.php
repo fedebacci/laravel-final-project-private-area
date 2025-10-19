@@ -17,7 +17,6 @@ class DecksController extends Controller
         //
         $data = $request->all();
 
-
         if (!array_key_exists('search', $data)) {
             $decks = Deck::paginate(10);
             $searchValue = null;
@@ -27,6 +26,7 @@ class DecksController extends Controller
             $decks = Deck::where('name', 'like', '%' . $data['search'] . '%')->paginate(10);
             $searchValue = $data['search'];
         }
+        
         return view('decks.index', compact('decks', 'searchValue'));
     }
     
