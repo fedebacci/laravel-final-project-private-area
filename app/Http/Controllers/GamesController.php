@@ -154,7 +154,18 @@ class GamesController extends Controller
             Storage::delete($game->logo);
         }
 
-        // dd($game);
+        // # Deleting connected resources 
+        // todo: see why it's not done from the cascadeOnDelete set in migrations
+        // dump($game);
+        // dump($game->cards);
+        // dd($game->decks);
+        foreach ($game->cards as $cardToDelete) {
+            $cardToDelete->decks()->detach();
+            $cardToDelete->delete();
+        }
+        foreach ($game->decks as $deckToDelete) {
+            $deckToDelete->delete();
+        }
 
         $game->delete();
 
