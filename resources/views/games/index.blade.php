@@ -18,6 +18,18 @@
                 </a>
             </div>
 
+
+
+            <form action="{{ route('games.index') }}" method="GET" class="row g-3">
+                @csrf
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <input type="submit" value="Search" class="btn btn-outline-success">
+                        <input value="{{ $searchValue }}" name="search" type="text" class="form-control" placeholder="Search">
+                    </div>
+                </div>
+            </form>
+
             @if ($games->isEmpty())
                 <div class="alert alert-warning">
                     No games found.

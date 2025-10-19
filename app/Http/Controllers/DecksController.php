@@ -12,11 +12,22 @@ class DecksController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $decks = Deck::paginate(10);
-        return view('decks.index', compact('decks'));
+        $data = $request->all();
+
+
+        if (!array_key_exists('search', $data)) {
+            $decks = Deck::paginate(10);
+            $searchValue = null;
+        } else if ($data['search'] == null) {
+            return redirect(route('decks.index'));
+        } else {
+            $decks = Deck::where('name', 'like', '%' . $data['search'] . '%')->paginate(10);
+            $searchValue = $data['search'];
+        }
+        return view('decks.index', compact('decks', 'searchValue'));
     }
     
     /**

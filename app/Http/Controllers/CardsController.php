@@ -12,11 +12,23 @@ class CardsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $cards = Card::paginate(10);
-        return view('cards.index', compact('cards'));
+        $data = $request->all();
+
+
+        if (!array_key_exists('search', $data)) {
+            $cards = Card::paginate(10);
+            $searchValue = null;
+        } else if ($data['search'] == null) {
+            return redirect(route('cards.index'));
+        } else {
+            $cards = Card::where('name', 'like', '%' . $data['search'] . '%')->paginate(10);
+            $searchValue = $data['search'];
+        }
+
+        return view('cards.index', compact('cards', 'searchValue'));
     }
     
     /**

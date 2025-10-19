@@ -11,11 +11,26 @@ class GamesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $games = Game::paginate(10);
-        return view('games.index', compact('games'));
+        $data = $request->all();
+        // dd($data);
+        // dump($data);
+        
+        if (!array_key_exists('search', $data)) {
+            $games = Game::paginate(10);
+            $searchValue = null;
+        } else if ($data['search'] == null) {
+            return redirect(route('games.index'));
+        } else {
+            $games = Game::where('name', 'like', '%' . $data['search'] . '%')->paginate(10);
+            $searchValue = $data['search'];
+        }
+        
+        // dump($searchValue);
+        // dd($games);
+        return view('games.index', compact('games', 'searchValue'));
     }
     
     /**

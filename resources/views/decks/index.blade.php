@@ -18,6 +18,16 @@
                 </a>
             </div>
 
+            <form action="{{ route('decks.index') }}" method="GET" class="row g-3">
+                @csrf
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <input type="submit" value="Search" class="btn btn-outline-success">
+                        <input value="{{ $searchValue }}" name="search" type="text" class="form-control" placeholder="Search">
+                    </div>
+                </div>
+            </form>    
+
             @if ($decks->isEmpty())
                 <div class="alert alert-warning">
                     No decks found.
