@@ -23,8 +23,19 @@ class DecksController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    // # RETURNS EMPTY ARRAY
+    // - Doing it with ID and retrieving from DataBase    
+    // public function show(Deck $deck)
+    // {
+    //     //
+    //     $deck->load('game', 'cards');
+    //     return response()->json($deck);
+    // }
+    public function show($id)
     {
         //
+        $deck = Deck::find($id);
+        $deck->load('game', 'cards');
+        return response()->json($deck);
     }
 }

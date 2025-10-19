@@ -20,3 +20,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('games', [GamesController::class, 'index']);
 Route::get('cards', [CardsController::class, 'index']);
 Route::get('decks', [DecksController::class, 'index']);
+
+// # FROM POSTMAN ONLY GAMES RETURNS SOMETHING, THE OTHERS RETURN EMPTY ARRAYS
+// - Doing it with ID and retrieving from DataBase
+// Route::get('games/{game}', [GamesController::class, 'show']);
+// Route::get('cards/{cards}', [CardsController::class, 'show']);
+// Route::get('decks/{decks}', [DecksController::class, 'show']);
+Route::get('games/{id}', [GamesController::class, 'show']);
+Route::get('cards/{id}', [CardsController::class, 'show']);
+Route::get('decks/{id}', [DecksController::class, 'show']);

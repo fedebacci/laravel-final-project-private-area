@@ -21,8 +21,17 @@ class GamesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    // # RETURNS EMPTY ARRAY
+    // - Doing it with ID and retrieving from DataBase
+    // public function show(Game $game)
+    // {
+    //     //
+    //     return response()->json($game);
+    // }
+    public function show($id)
     {
         //
+        $game = Game::find($id);
+        return response()->json($game);
     }
 }

@@ -23,8 +23,19 @@ class CardsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    // # RETURNS EMPTY ARRAY
+    // - Doing it with ID and retrieving from DataBase
+    // public function show(Card $card)
+    // {
+    //     //
+    //     $card->load('game', 'decks');
+    //     return response()->json($card);
+    // }
+    public function show($id)
     {
         //
+        $card = Card::find($id);
+        $card->load('game', 'decks');
+        return response()->json($card);
     }
 }
