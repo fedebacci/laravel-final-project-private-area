@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Deck;
 use Illuminate\Http\Request;
 
 class DecksController extends Controller
@@ -14,6 +15,9 @@ class DecksController extends Controller
     public function index()
     {
         //
+        // $decks = Deck::all();
+        $decks = Deck::with('game', 'cards')->get();
+        return response()->json($decks);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Card;
 use Illuminate\Http\Request;
 
 class CardsController extends Controller
@@ -14,6 +15,9 @@ class CardsController extends Controller
     public function index()
     {
         //
+        // $cards = Card::all();
+        $cards = Card::with('game', 'decks')->get();
+        return response()->json($cards);        
     }
 
     /**
