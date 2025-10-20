@@ -21,7 +21,7 @@
         <div class="container">
             <p>
                 You can also find the 
-                <a href="#">frontoffice project</a> 
+                <a href="https://github.com/fedebacci/laravel-final-project-public-area" target="_blank">frontoffice project</a> 
                 on my
                 <a href="https://github.com/fedebacci?tab=repositories" target="_blank">GitHub profile</a>.
             </p>
