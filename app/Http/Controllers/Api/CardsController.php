@@ -17,7 +17,10 @@ class CardsController extends Controller
         //
         // $cards = Card::all();
         $cards = Card::with('game', 'decks')->get();
-        return response()->json($cards);        
+        return response()->json([
+            'message' => 'Cards retrieved successfully',
+            'resources' => $cards
+        ]);        
     }
 
     /**

@@ -15,7 +15,10 @@ class GamesController extends Controller
     {
         //
         $games = Game::all();
-        return response()->json($games);
+        return response()->json([
+            'message' => 'Games retrieved successfully',
+            'resources' => $games
+        ]);
     }
 
     /**
