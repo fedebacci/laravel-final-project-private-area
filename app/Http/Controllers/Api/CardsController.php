@@ -10,13 +10,43 @@ class CardsController extends Controller
 {
     //
     /**
-     * Display a listing of the resource.
+     * Display a listing of all the resource.
      */
     public function index()
     {
         //
-        // $cards = Card::all();
-        $cards = Card::with('game', 'decks')->get();
+        $cards = Card::all();
+        $cards->load('game', 'decks');
+        return response()->json([
+            'message' => 'Cards retrieved successfully',
+            'resources' => $cards
+        ]);        
+    }
+
+    //
+    /**
+     * Display a listing of the resource with pagination.
+     */
+    public function paginatedIndex()
+    {
+        //
+        $cards = Card::paginate(10);
+        $cards->load('game', 'decks');
+        return response()->json([
+            'message' => 'Cards retrieved successfully',
+            'resources' => $cards
+        ]);        
+    }
+
+    //
+    /**
+     * Display a listing of the resource with pagination, filtering only the ones with an image.
+     */
+    public function paginatedIndexWithImages()
+    {
+        //
+        $cards = Card::where('image', '!=', 'null')->paginate(10);
+        $cards->load('game', 'decks');
         return response()->json([
             'message' => 'Cards retrieved successfully',
             'resources' => $cards
@@ -24,7 +54,7 @@ class CardsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show a single resource.
      */
     // # RETURNS EMPTY ARRAY
     // - Doing it with ID and retrieving from DataBase

@@ -15,8 +15,23 @@ class DecksController extends Controller
     public function index()
     {
         //
-        // $decks = Deck::all();
-        $decks = Deck::with('game', 'cards')->get();
+        $decks = Deck::all();
+        $decks->load('game', 'cards');
+        return response()->json([
+            'message' => 'Decks retrieved successfully',
+            'resources' => $decks
+        ]);
+    }
+
+    //
+    /**
+     * Display a listing of the resource.
+     */
+    public function paginatedIndex()
+    {
+        //
+        $decks = Deck::paginate(10);
+        $decks->load('game', 'cards');
         return response()->json([
             'message' => 'Decks retrieved successfully',
             'resources' => $decks
@@ -24,7 +39,7 @@ class DecksController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show a single resource.
      */
     // # RETURNS EMPTY ARRAY
     // - Doing it with ID and retrieving from DataBase    

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class GamesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of all the resource.
      */
     public function index()
     {
@@ -22,7 +22,20 @@ class GamesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing all of the resource with pagination.
+     */
+    public function paginatedIndex()
+    {
+        //
+        $games = Game::paginate(10);
+        return response()->json([
+            'message' => 'Games retrieved successfully',
+            'resources' => $games
+        ]);
+    }
+
+    /**
+     * Show a single resource.
      */
     // # RETURNS EMPTY ARRAY
     // - Doing it with ID and retrieving from DataBase
