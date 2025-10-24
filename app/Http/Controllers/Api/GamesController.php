@@ -57,6 +57,7 @@ class GamesController extends Controller
 
         // return response()->json($game);
         return response()->json([
+            'message' => 'Game ' . $id . ' retrieved successfully',
             'resource' => $game,
         ]);
     }

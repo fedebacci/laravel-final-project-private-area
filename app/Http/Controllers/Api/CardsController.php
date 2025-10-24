@@ -95,6 +95,7 @@ class CardsController extends Controller
         $card = Card::find($id);
         $card->load('game', 'decks');
         return response()->json([
+            'message' => 'Card ' . $id . ' retrieved successfully',
             'resource' => $card
         ]);
     }
