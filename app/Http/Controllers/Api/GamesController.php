@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Game;
+
+use App\Filters\QueryFilter;
+use App\Models\Card;
 use Illuminate\Http\Request;
 
 class GamesController extends Controller
@@ -15,6 +18,7 @@ class GamesController extends Controller
     {
         //
         $games = Game::all();
+
         return response()->json([
             'message' => 'Games retrieved successfully',
             'resources' => $games
@@ -46,8 +50,14 @@ class GamesController extends Controller
     // }
     public function show($id)
     {
-        //
         $game = Game::find($id);
-        return response()->json($game);
+
+        $game->cards = $game->cards;
+        $game->decks = $game->decks;
+
+        // return response()->json($game);
+        return response()->json([
+            'resource' => $game,
+        ]);
     }
 }

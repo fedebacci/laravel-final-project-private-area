@@ -54,6 +54,8 @@ class DecksController extends Controller
         //
         $deck = Deck::find($id);
         $deck->load('game', 'cards');
-        return response()->json($deck);
+        return response()->json([
+            'resource' => $deck
+        ]);
     }
 }

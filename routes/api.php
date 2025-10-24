@@ -25,6 +25,14 @@ Route::get('cards/paginated', [CardsController::class, 'paginatedIndex']);
 Route::get('decks/paginated', [DecksController::class, 'paginatedIndex']);
 Route::get('cards/paginatedWithImages', [CardsController::class, 'paginatedIndexWithImages']);
 
+
+
+
+// # Testing filters application.
+Route::get('cards/getFiltered', [CardsController::class, 'getFiltered']);
+
+
+
 // # FROM POSTMAN ONLY GAMES RETURNS SOMETHING, THE OTHERS RETURN EMPTY ARRAYS
 // - Doing it with ID and retrieving from DataBase
 // Route::get('games/{game}', [GamesController::class, 'show']);
@@ -33,3 +41,4 @@ Route::get('cards/paginatedWithImages', [CardsController::class, 'paginatedIndex
 Route::get('games/{id}', [GamesController::class, 'show']);
 Route::get('cards/{id}', [CardsController::class, 'show']);
 Route::get('decks/{id}', [DecksController::class, 'show']);
+

@@ -6,9 +6,34 @@ use App\Http\Controllers\Controller;
 use App\Models\Card;
 use Illuminate\Http\Request;
 
+// ? Does it exist? Or is it thr model of the resource?
+// use App\Models\DataModel;
+use App\Filters\QueryFilter;
+
 class CardsController extends Controller
 {
     //
+    /**
+     * # Testing filters application.
+     */
+    public function getFiltered(Request $request)
+    {
+        //
+        $query = Card::query();
+        $query = QueryFilter::apply($query, $request);
+        $data = $query->get();
+
+
+        return response()->json([
+            'message' => 'Getting filtered cards',
+            // 'filteredResources' => $cards,
+            'filteredResources' => $data,
+        ]);        
+    }
+
+
+
+
     /**
      * Display a listing of all the resource.
      */
@@ -69,6 +94,8 @@ class CardsController extends Controller
         //
         $card = Card::find($id);
         $card->load('game', 'decks');
-        return response()->json($card);
+        return response()->json([
+            'resource' => $card
+        ]);
     }
 }
