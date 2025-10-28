@@ -26,22 +26,12 @@ class GamesController extends Controller
         ]);        
     }
 
-    // /**
-    //  * Display a listing all of the resource with pagination.
-    //  */
-    // public function paginatedIndex()
-    // {
-    //     //
-    //     $games = Game::paginate(10);
-    //     return response()->json([
-    //         'message' => 'Games paginatedIndex retrieved successfully',
-    //         'data' => $games
-    //     ]);
-    // }
-
     /**
      * Show a single resource.
      */
+    // # RETURNS EMPTY ARRAY
+    // - Doing it with ID and retrieving from DataBase       
+    // public function show(Deck $deck)
     public function show($id)
     {
         $game = Game::find($id);

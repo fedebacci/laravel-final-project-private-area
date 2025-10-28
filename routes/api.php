@@ -20,20 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('games', [GamesController::class, 'index']);
 Route::get('cards', [CardsController::class, 'index']);
 Route::get('decks', [DecksController::class, 'index']);
-// Route::get('games/paginated', [GamesController::class, 'paginatedIndex']);
-// Route::get('cards/paginated', [CardsController::class, 'paginatedIndex']);
-// Route::get('decks/paginated', [DecksController::class, 'paginatedIndex']);
-// Route::get('cards/paginatedWithImages', [CardsController::class, 'paginatedIndexWithImages']);
 
 
-
-
-// // # Testing filters application.
-// Route::get('cards/getFiltered', [CardsController::class, 'getFiltered']);
-
-
-
-// # FROM POSTMAN ONLY GAMES RETURNS SOMETHING, THE OTHERS RETURN EMPTY ARRAYS
+// # RETURNS EMPTY ARRAY
 // - Doing it with ID and retrieving from DataBase
 // Route::get('games/{game}', [GamesController::class, 'show']);
 // Route::get('cards/{cards}', [CardsController::class, 'show']);
