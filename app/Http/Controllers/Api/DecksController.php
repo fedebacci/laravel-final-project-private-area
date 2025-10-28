@@ -33,20 +33,20 @@ class DecksController extends Controller
         ]);         
     }
 
-    //
-    /**
-     * Display a listing of the resource.
-     */
-    public function paginatedIndex()
-    {
-        //
-        $decks = Deck::paginate(10);
-        $decks->load('game', 'cards');
-        return response()->json([
-            'message' => 'Decks retrieved successfully',
-            'data' => $decks
-        ]);
-    }
+    // //
+    // /**
+    //  * Display a listing of the resource.
+    //  */
+    // public function paginatedIndex()
+    // {
+    //     //
+    //     $decks = Deck::paginate(10);
+    //     $decks->load('game', 'cards');
+    //     return response()->json([
+    //         'message' => 'Decks retrieved successfully',
+    //         'data' => $decks
+    //     ]);
+    // }
 
     /**
      * Show a single resource.

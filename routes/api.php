@@ -20,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('games', [GamesController::class, 'index']);
 Route::get('cards', [CardsController::class, 'index']);
 Route::get('decks', [DecksController::class, 'index']);
-Route::get('games/paginated', [GamesController::class, 'paginatedIndex']);
-Route::get('cards/paginated', [CardsController::class, 'paginatedIndex']);
-Route::get('decks/paginated', [DecksController::class, 'paginatedIndex']);
-Route::get('cards/paginatedWithImages', [CardsController::class, 'paginatedIndexWithImages']);
+// Route::get('games/paginated', [GamesController::class, 'paginatedIndex']);
+// Route::get('cards/paginated', [CardsController::class, 'paginatedIndex']);
+// Route::get('decks/paginated', [DecksController::class, 'paginatedIndex']);
+// Route::get('cards/paginatedWithImages', [CardsController::class, 'paginatedIndexWithImages']);
 
 
 

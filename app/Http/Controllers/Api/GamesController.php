@@ -16,14 +16,6 @@ class GamesController extends Controller
      */
     public function index(Request $request)
     {
-        //
-        // $games = Game::all();
-
-        // return response()->json([
-        //     'message' => 'Games retrieved successfully',
-        //     'resources' => $games
-        // ]);
-
         $query = Game::query();
         $query = QueryFilter::apply($query, $request);
         $data = $query->get();
@@ -34,29 +26,22 @@ class GamesController extends Controller
         ]);        
     }
 
-    /**
-     * Display a listing all of the resource with pagination.
-     */
-    public function paginatedIndex()
-    {
-        //
-        $games = Game::paginate(10);
-        return response()->json([
-            'message' => 'Games paginatedIndex retrieved successfully',
-            'data' => $games
-        ]);
-    }
+    // /**
+    //  * Display a listing all of the resource with pagination.
+    //  */
+    // public function paginatedIndex()
+    // {
+    //     //
+    //     $games = Game::paginate(10);
+    //     return response()->json([
+    //         'message' => 'Games paginatedIndex retrieved successfully',
+    //         'data' => $games
+    //     ]);
+    // }
 
     /**
      * Show a single resource.
      */
-    // # RETURNS EMPTY ARRAY
-    // - Doing it with ID and retrieving from DataBase
-    // public function show(Game $game)
-    // {
-    //     //
-    //     return response()->json($game);
-    // }
     public function show($id)
     {
         $game = Game::find($id);
