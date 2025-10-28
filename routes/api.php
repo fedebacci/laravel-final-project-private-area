@@ -28,8 +28,8 @@ Route::get('cards/paginatedWithImages', [CardsController::class, 'paginatedIndex
 
 
 
-// # Testing filters application.
-Route::get('cards/getFiltered', [CardsController::class, 'getFiltered']);
+// // # Testing filters application.
+// Route::get('cards/getFiltered', [CardsController::class, 'getFiltered']);
 
 
 

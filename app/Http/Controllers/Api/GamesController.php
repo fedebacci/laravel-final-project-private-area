@@ -14,15 +14,24 @@ class GamesController extends Controller
     /**
      * Display a listing of all the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $games = Game::all();
+        // $games = Game::all();
+
+        // return response()->json([
+        //     'message' => 'Games retrieved successfully',
+        //     'resources' => $games
+        // ]);
+
+        $query = Game::query();
+        $query = QueryFilter::apply($query, $request);
+        $data = $query->get();
 
         return response()->json([
-            'message' => 'Games retrieved successfully',
-            'resources' => $games
-        ]);
+            'message' => 'Getting filtered Games from index',
+            'data' => $data,
+        ]);        
     }
 
     /**
@@ -33,8 +42,8 @@ class GamesController extends Controller
         //
         $games = Game::paginate(10);
         return response()->json([
-            'message' => 'Games retrieved successfully',
-            'resources' => $games
+            'message' => 'Games paginatedIndex retrieved successfully',
+            'data' => $games
         ]);
     }
 
@@ -58,7 +67,7 @@ class GamesController extends Controller
         // return response()->json($game);
         return response()->json([
             'message' => 'Game ' . $id . ' retrieved successfully',
-            'resource' => $game,
+            'data' => $game,
         ]);
     }
 }

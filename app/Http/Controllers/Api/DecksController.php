@@ -6,21 +6,31 @@ use App\Http\Controllers\Controller;
 use App\Models\Deck;
 use Illuminate\Http\Request;
 
+use App\Filters\QueryFilter;
+
 class DecksController extends Controller
 {
     //
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $decks = Deck::all();
-        $decks->load('game', 'cards');
+        // $decks = Deck::all();
+        // $decks->load('game', 'cards');
+        // return response()->json([
+        //     'message' => 'Decks retrieved successfully',
+        //     'resources' => $decks
+        // ]);
+        $query = Deck::query();
+        $query = QueryFilter::apply($query, $request);
+        $data = $query->get();
+
         return response()->json([
-            'message' => 'Decks retrieved successfully',
-            'resources' => $decks
-        ]);
+            'message' => 'Getting filtered Decks from index',
+            'data' => $data,
+        ]);         
     }
 
     //
@@ -34,7 +44,7 @@ class DecksController extends Controller
         $decks->load('game', 'cards');
         return response()->json([
             'message' => 'Decks retrieved successfully',
-            'resources' => $decks
+            'data' => $decks
         ]);
     }
 
@@ -56,7 +66,7 @@ class DecksController extends Controller
         $deck->load('game', 'cards');
         return response()->json([
             'message' => 'Deck ' . $id . ' retrieved successfully',
-            'resource' => $deck
+            'data' => $deck
         ]);
     }
 }
