@@ -22,7 +22,7 @@ class QueryFilter
         }
 
         if ($request->filled('max_price')) {
-            $query->where('price', '<=', $request->input('max_price') . ' 23:59:59');
+            $query->where('price', '<=', $request->input('max_price'));
         }
 
         if ($request->filled('game_id')) {
